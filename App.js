@@ -10,9 +10,11 @@ import {
   TextInput,
   Button,
   KeyboardAvoidingView,
+  AsyncStorage,
 } from 'react-native';
 
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 40 : StatusBar.currentHeigh
+const MEMO = "@smashmemo.memo"
 
 export default class App extends React.Component {
 
@@ -25,7 +27,36 @@ export default class App extends React.Component {
     }
   }
 
-  onAddItem() {
+  componentDidMount() {
+    this.loadMemo()
+  }
+
+  loadMemo = async () => {
+    try {
+      const memoString = await AsyncStorage.getItem(MEMO)
+      if (memoString) {
+        const memo = JSON.parse(memoString)
+        const currendIndex = memo.length
+        this.setState({
+          memo: memo,
+          currendIndex: currendIndex,
+        })
+      }
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
+  saveMemo = async (memo) => {
+    try {
+      const memoString = JSON.stringify(memo)
+      await AsyncStorage.setItem(MEMO, memoString)
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
+  onAddItem = () => {
     const title = this.state.inputText
     if (title === "") {
       return;
@@ -38,6 +69,7 @@ export default class App extends React.Component {
       currendIndex: index + 1,
       inputText: "",
     })
+    this.saveMemo(memo)
   }
 
   render() {
