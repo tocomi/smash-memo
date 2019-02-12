@@ -21,9 +21,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      memo: [],
+      memos: [],
       currendIndex: 0,
       inputText: "",
+      filterText: "",
     }
   }
 
@@ -35,10 +36,10 @@ export default class App extends React.Component {
     try {
       const memoString = await AsyncStorage.getItem(MEMO)
       if (memoString) {
-        const memo = JSON.parse(memoString)
-        const currendIndex = memo.length
+        const memos = JSON.parse(memoString)
+        const currendIndex = memos.length
         this.setState({
-          memo: memo,
+          memos: memos,
           currendIndex: currendIndex,
         })
       }
@@ -47,9 +48,9 @@ export default class App extends React.Component {
     }
   }
 
-  saveMemo = async (memo) => {
+  saveMemo = async (memos) => {
     try {
-      const memoString = JSON.stringify(memo)
+      const memoString = JSON.stringify(memos)
       await AsyncStorage.setItem(MEMO, memoString)
     } catch(e) {
       console.log(e)
@@ -63,9 +64,9 @@ export default class App extends React.Component {
     }
     const index = this.state.currendIndex
     const newMemo = { index: index, title: title }
-    const memo = [...this.state.memo, newMemo]
+    const memos = [...this.state.memos, newMemo]
     this.setState({
-      memo: memo,
+      memos: memos,
       currendIndex: index + 1,
       inputText: "",
     })
@@ -73,14 +74,24 @@ export default class App extends React.Component {
   }
 
   render() {
+    const filterText = this.state.filterText
+    let memos = this.state.memos
+    if (filterText !== "") {
+      memos = memos.filter(memo => memo.title.includes(filterText))
+    }
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         <View style={styles.filter}>
-          <Text>Filter</Text>
+          <TextInput
+            onChangeText={(text) => this.setState({filterText: text})}
+            value={this.state.filterText}
+            style={styles.inputText}
+            placeholder="Type filter text"
+          />
         </View>
         <ScrollView style={styles.memoList}>
           <FlatList
-            data={this.state.memo}
+            data={memos}
             renderItem={({item}) => <Text>{item.title}</Text>}
             keyExtrator={(item, index) => item.index}
           />
@@ -90,6 +101,7 @@ export default class App extends React.Component {
             onChangeText={(text) => this.setState({inputText: text})}
             value={this.state.inputText}
             style={styles.inputText}
+            placeholder="Type your memo"
           />
           <Button
             onPress={this.onAddItem}
