@@ -7,15 +7,17 @@ import {
   Platform,
   ScrollView,
   FlatList,
-  TextInput,
-  Button,
   KeyboardAvoidingView,
   AsyncStorage,
 } from 'react-native';
 
 import { 
-  SearchBar
+  SearchBar,
+  Input,
+  Button,
 } from 'react-native-elements';
+
+import Icon from 'react-native-vector-icons/Feather'
 
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 40 : StatusBar.currentHeigh
 const MEMO = "@smashmemo.memo"
@@ -74,7 +76,7 @@ export default class App extends React.Component {
       currendIndex: index + 1,
       inputText: "",
     })
-    this.saveMemo(memo)
+    this.saveMemo(memos)
   }
 
   render() {
@@ -102,16 +104,22 @@ export default class App extends React.Component {
           />
         </ScrollView>
         <View style={styles.input}>
-          <TextInput
+          <Input
             onChangeText={(text) => this.setState({inputText: text})}
             value={this.state.inputText}
-            style={styles.inputText}
-            placeholder="Type your memo"
+            containerStyle={styles.inputText}
           />
           <Button
+            icon={
+              <Icon
+                name='plus'
+                size={30}
+                color='white'
+              />
+            }
+            title=""
             onPress={this.onAddItem}
-            title="Add"
-            style={styles.inputButton}
+            buttonStyle={styles.inputButton}
           />
         </View>
       </KeyboardAvoidingView>
@@ -132,14 +140,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   input: {
-    height: 30,
+    height: 50,
     flexDirection: 'row',
+    paddingRight: 10,
   },
   inputText: {
     flex: 1,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   inputButton: {
-    width: 100,
-    color: '#841584',
+    height: 48,
+    width: 48,
+    borderWidth: 0,
+    borderColor: 'transparent',
+    borderRadius: 48,
   }
 });
