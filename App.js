@@ -20,7 +20,12 @@ import {
 
 import Icon from 'react-native-vector-icons/Feather'
 
-const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 40 : StatusBar.currentHeigh
+import {
+  ifIphoneX,
+  getStatusBarHeight,
+} from 'react-native-iphone-x-helper'
+
+const STATUSBAR_HEIGHT = getStatusBarHeight()
 const MEMO = "@smashmemo.memo"
 
 export default class App extends React.Component {
@@ -145,7 +150,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   input: {
-    height: 50,
+    ...ifIphoneX({
+      height: 80,
+      paddingBottom: 30,
+    }, {
+      height: 50,
+    }),
     flexDirection: 'row',
     paddingRight: 10,
   },
