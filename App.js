@@ -15,6 +15,7 @@ import {
   SearchBar,
   Input,
   Button,
+  ListItem,
 } from 'react-native-elements';
 
 import Icon from 'react-native-vector-icons/Feather'
@@ -99,8 +100,12 @@ export default class App extends React.Component {
         <ScrollView style={styles.memoList}>
           <FlatList
             data={memos}
-            renderItem={({item}) => <Text>{item.title}</Text>}
             keyExtrator={(item, index) => item.index}
+            renderItem={({item}) => 
+              <ListItem
+                title={item.title}
+                bottomDivider
+              />}
           />
         </ScrollView>
         <View style={styles.input}>
