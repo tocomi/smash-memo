@@ -13,6 +13,10 @@ import {
   AsyncStorage,
 } from 'react-native';
 
+import { 
+  SearchBar
+} from 'react-native-elements';
+
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 40 : StatusBar.currentHeigh
 const MEMO = "@smashmemo.memo"
 
@@ -79,16 +83,17 @@ export default class App extends React.Component {
     if (filterText !== "") {
       memos = memos.filter(memo => memo.title.includes(filterText))
     }
+    const platform = Platform.OS === 'ios' ? 'ios' : 'android'
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
-        <View style={styles.filter}>
-          <TextInput
-            onChangeText={(text) => this.setState({filterText: text})}
-            value={this.state.filterText}
-            style={styles.inputText}
-            placeholder="Type filter text"
-          />
-        </View>
+        <SearchBar
+          platform={platform}
+          cancelButtonTitle="Cancel"
+          onChangeText={(text) => this.setState({filterText: text})}
+          onClear={() => this.setState({filterText: ""})}
+          value={this.state.filterText}
+          placeholder="Type filter text"
+        />
         <ScrollView style={styles.memoList}>
           <FlatList
             data={memos}
