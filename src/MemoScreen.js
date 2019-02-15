@@ -6,7 +6,6 @@ import {
   ScrollView,
   FlatList,
   KeyboardAvoidingView,
-  AsyncStorage,
 } from 'react-native';
 
 import { 
@@ -27,7 +26,6 @@ import { connect } from 'react-redux'
 import { addMemo } from './action/actionCreators'
 
 const STATUSBAR_HEIGHT = getStatusBarHeight()
-const MEMO = "@smashmemo.memo"
 
 class MemoScreen extends React.Component {
 

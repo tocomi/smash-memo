@@ -1,13 +1,16 @@
 import React from 'react'
 import MemoScreen from './src/MemoScreen'
 import { Provider } from 'react-redux'
-import { store } from './src/store/store'
+import store, { persistor } from './src/store/store'
+import { PersistGate } from 'redux-persist/integration/react'
 
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <MemoScreen/>
+        <PersistGate loading={null} persistor={persistor}>
+          <MemoScreen/>
+        </PersistGate>
       </Provider>
     )
   }
