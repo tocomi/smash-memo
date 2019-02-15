@@ -55,12 +55,14 @@ class MemoScreen extends React.Component {
   }
 
   swipeButton = (item) => {
-    return [{
-      text: 'Delete',
-      backgroundColor: 'red',
-      underlayColor: '#F55',
-      onPress: () => { this.deleteItem(item) }
-    }]
+    return [
+      {
+        text: 'Delete',
+        backgroundColor: 'red',
+        underlayColor: '#F55',
+        onPress: () => { this.deleteItem(item) }
+      }
+    ]
   }
 
   render() {
