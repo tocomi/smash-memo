@@ -16,6 +16,7 @@ import {
 } from 'react-native-elements';
 
 import Icon from 'react-native-vector-icons/Feather'
+import Swipeout from 'react-native-swipeout'
 
 import {
   ifIphoneX,
@@ -23,7 +24,7 @@ import {
 } from 'react-native-iphone-x-helper'
 
 import { connect } from 'react-redux'
-import { addMemo } from './action/actionCreators'
+import { addMemo, deleteMemo } from './action/actionCreators'
 
 const STATUSBAR_HEIGHT = getStatusBarHeight()
 
@@ -37,7 +38,7 @@ class MemoScreen extends React.Component {
     }
   }
 
-  onAddItem = () => {
+  addItem = () => {
     const title = this.state.inputText
     if (title === "") {
       return;
@@ -49,6 +50,19 @@ class MemoScreen extends React.Component {
     })
   }
 
+  deleteItem = (item) => {
+    this.props.deleteMemo(item.index)
+  }
+
+  swipeButton = (item) => {
+    return [{
+      text: 'Delete',
+      backgroundColor: 'red',
+      underlayColor: '#F55',
+      onPress: () => { this.deleteItem(item) }
+    }]
+  }
+
   render() {
     const filterText = this.state.filterText
     let memos = this.props.memos
@@ -56,6 +70,7 @@ class MemoScreen extends React.Component {
       memos = memos.filter(memo => memo.title.includes(filterText))
     }
     const platform = Platform.OS === 'ios' ? 'ios' : 'android'
+
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         <SearchBar
@@ -70,10 +85,15 @@ class MemoScreen extends React.Component {
           <FlatList
             data={memos}
             renderItem={({item}) => 
-              <ListItem
-                title={item.title}
-                bottomDivider
-              />
+              <Swipeout
+                right={this.swipeButton(item)}
+                autoClose={true}
+              >
+                <ListItem
+                  title={item.title}
+                  bottomDivider
+                />
+              </Swipeout>
             }
             keyExtractor={(item, index) => item.index.toString()}
           />
@@ -93,7 +113,7 @@ class MemoScreen extends React.Component {
               />
             }
             title=""
-            onPress={this.onAddItem}
+            onPress={this.addItem}
             buttonStyle={styles.inputButton}
           />
         </View>
@@ -112,6 +132,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addMemo(text) {
       dispatch(addMemo(text))
+    },
+    deleteMemo(index) {
+      dispatch(deleteMemo(index))
     },
   }
 }

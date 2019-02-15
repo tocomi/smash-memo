@@ -14,6 +14,12 @@ const memos = (state = initialState, action) => {
         memos: [ ...state.memos, newMemo ],
         currentIndex: state.currentIndex + 1,
       }
+    case MEMO.DELETE:
+      const memos = state.memos.filter(memo => memo.index !== action.index)
+      return {
+        ...state,
+        memos: memos,
+      }
     default:
       return state
   }
