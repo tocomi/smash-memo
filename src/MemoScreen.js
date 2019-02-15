@@ -69,12 +69,13 @@ class MemoScreen extends React.Component {
         <ScrollView style={styles.memoList}>
           <FlatList
             data={memos}
-            keyExtrator={(item, index) => item.index}
             renderItem={({item}) => 
               <ListItem
                 title={item.title}
                 bottomDivider
-              />}
+              />
+            }
+            keyExtractor={(item, index) => item.index.toString()}
           />
         </ScrollView>
         <View style={styles.input}>
