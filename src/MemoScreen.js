@@ -1,9 +1,7 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
-  StatusBar,
   Platform,
   ScrollView,
   FlatList,
@@ -25,47 +23,19 @@ import {
   getStatusBarHeight,
 } from 'react-native-iphone-x-helper'
 
+import { connect } from 'react-redux'
+import { addMemo } from './action/actionCreators'
+
 const STATUSBAR_HEIGHT = getStatusBarHeight()
 const MEMO = "@smashmemo.memo"
 
-export default class App extends React.Component {
+class MemoScreen extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      memos: [],
-      currendIndex: 0,
       inputText: "",
       filterText: "",
-    }
-  }
-
-  componentDidMount() {
-    this.loadMemo()
-  }
-
-  loadMemo = async () => {
-    try {
-      const memoString = await AsyncStorage.getItem(MEMO)
-      if (memoString) {
-        const memos = JSON.parse(memoString)
-        const currendIndex = memos.length
-        this.setState({
-          memos: memos,
-          currendIndex: currendIndex,
-        })
-      }
-    } catch(e) {
-      console.log(e)
-    }
-  }
-
-  saveMemo = async (memos) => {
-    try {
-      const memoString = JSON.stringify(memos)
-      await AsyncStorage.setItem(MEMO, memoString)
-    } catch(e) {
-      console.log(e)
     }
   }
 
@@ -74,20 +44,16 @@ export default class App extends React.Component {
     if (title === "") {
       return;
     }
-    const index = this.state.currendIndex
-    const newMemo = { index: index, title: title }
-    const memos = [...this.state.memos, newMemo]
+
+    this.props.addMemo(title)
     this.setState({
-      memos: memos,
-      currendIndex: index + 1,
       inputText: "",
     })
-    this.saveMemo(memos)
   }
 
   render() {
     const filterText = this.state.filterText
-    let memos = this.state.memos
+    let memos = this.props.memos
     if (filterText !== "") {
       memos = memos.filter(memo => memo.title.includes(filterText))
     }
@@ -136,6 +102,22 @@ export default class App extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    memos: state.memos.memos
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addMemo(text) {
+      dispatch(addMemo(text))
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MemoScreen)
 
 const styles = StyleSheet.create({
   container: {
