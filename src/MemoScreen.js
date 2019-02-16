@@ -198,10 +198,10 @@ const styles = StyleSheet.create({
   },
   input: {
     ...ifIphoneX({
-      height: 80,
-      paddingBottom: 30,
+      height: 90,
+      paddingBottom: 40,
     }, {
-      height: 50,
+      height: 65,
     }),
     flexDirection: 'row',
     justifyContent: 'flex-end',
