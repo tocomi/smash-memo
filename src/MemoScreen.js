@@ -17,6 +17,7 @@ import {
 
 import Icon from 'react-native-vector-icons/Feather'
 import Swipeout from 'react-native-swipeout'
+import Modal from 'react-native-modalbox';
 
 import {
   ifIphoneX,
@@ -48,10 +49,16 @@ class MemoScreen extends React.Component {
     this.setState({
       inputText: "",
     })
+
+    this.closeAddMemoWindow()
   }
 
   deleteItem = (item) => {
     this.props.deleteMemo(item.index)
+  }
+
+  closeAddMemoWindow = () => {
+    this.refs.addMemoWindow.close()
   }
 
   swipeButton = (item) => {
@@ -83,6 +90,7 @@ class MemoScreen extends React.Component {
           value={this.state.filterText}
           placeholder="Type filter text"
         />
+
         <ScrollView style={styles.memoList}>
           <FlatList
             data={memos}
@@ -100,12 +108,8 @@ class MemoScreen extends React.Component {
             keyExtractor={(item, index) => item.index.toString()}
           />
         </ScrollView>
+
         <View style={styles.input}>
-          <Input
-            onChangeText={(text) => this.setState({inputText: text})}
-            value={this.state.inputText}
-            containerStyle={styles.inputText}
-          />
           <Button
             icon={
               <Icon
@@ -115,10 +119,47 @@ class MemoScreen extends React.Component {
               />
             }
             title=""
-            onPress={this.addItem}
+            onPress={() => this.refs.addMemoWindow.open()}
             buttonStyle={styles.inputButton}
           />
         </View>
+
+        <Modal
+          style={styles.modal}
+          ref={"addMemoWindow"}
+        >
+          <View style={styles.modal}>
+            <Input
+              onChangeText={(text) => this.setState({inputText: text})}
+              value={this.state.inputText}
+              containerStyle={styles.inputText}
+            />
+            <View style={styles.buttons}>
+              <Button
+                icon={
+                  <Icon
+                    name='check-circle'
+                    size={30}
+                    color='white'
+                  />
+                }
+                title=""
+                onPress={() => this.addItem()}
+              />
+              <Button
+                icon={
+                  <Icon
+                    name='x-circle'
+                    size={30}
+                    color='white'
+                  />
+                }
+                title=""
+                onPress={() => this.refs.addMemoWindow.close()}
+              />
+            </View>
+          </View>
+        </Modal>
       </KeyboardAvoidingView>
     );
   }
@@ -163,6 +204,7 @@ const styles = StyleSheet.create({
       height: 50,
     }),
     flexDirection: 'row',
+    justifyContent: 'flex-end',
     paddingRight: 10,
   },
   inputText: {
@@ -171,10 +213,17 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   inputButton: {
-    height: 48,
-    width: 48,
+    height: 60,
+    width: 60,
     borderWidth: 0,
     borderColor: 'transparent',
     borderRadius: 48,
-  }
+  },
+  modal: {
+    height: 400,
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
 });
