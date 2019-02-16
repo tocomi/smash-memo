@@ -6,6 +6,7 @@ import {
   ScrollView,
   FlatList,
   KeyboardAvoidingView,
+  Text,
 } from 'react-native';
 
 import { 
@@ -18,6 +19,7 @@ import {
 import Icon from 'react-native-vector-icons/Feather'
 import Swipeout from 'react-native-swipeout'
 import Modal from 'react-native-modalbox';
+import DatePicker from 'react-native-datepicker'
 
 import {
   ifIphoneX,
@@ -35,6 +37,7 @@ class MemoScreen extends React.Component {
     super(props)
     this.state = {
       inputText: "",
+      inputDate: "",
       filterText: "",
     }
   }
@@ -120,7 +123,7 @@ class MemoScreen extends React.Component {
             }
             title=""
             onPress={() => this.refs.addMemoWindow.open()}
-            buttonStyle={styles.inputButton}
+            buttonStyle={styles.addButton}
           />
         </View>
 
@@ -129,12 +132,25 @@ class MemoScreen extends React.Component {
           ref={"addMemoWindow"}
         >
           <View style={styles.modal}>
-            <Input
-              onChangeText={(text) => this.setState({inputText: text})}
-              value={this.state.inputText}
-              containerStyle={styles.inputText}
-            />
-            <View style={styles.buttons}>
+            <View style={styles.inputView}>
+              <Text style={styles.inputLabel}>Title</Text>
+              <Input
+                onChangeText={(text) => this.setState({inputText: text})}
+                value={this.state.inputText}
+                containerStyle={styles.inputText}
+              />
+            </View>
+            <View style={styles.inputView}>
+              <Text style={styles.inputLabel}>Date</Text>
+              <DatePicker
+                style={{width: 200}}
+                date={this.state.inputDate}
+                confirmBtnText='Confirm'
+                cancelBtnText='Cancel'
+                onDateChange={(date) => {this.setState({inputDate: date})}}
+              />
+            </View>
+            <View style={styles.inputButtons}>
               <Button
                 icon={
                   <Icon
@@ -145,6 +161,7 @@ class MemoScreen extends React.Component {
                 }
                 title=""
                 onPress={() => this.addItem()}
+                style={styles.inputButton}
               />
               <Button
                 icon={
@@ -156,6 +173,7 @@ class MemoScreen extends React.Component {
                 }
                 title=""
                 onPress={() => this.refs.addMemoWindow.close()}
+                style={styles.inputButton}
               />
             </View>
           </View>
@@ -207,12 +225,27 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     paddingRight: 10,
   },
+  inputView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  inputLabel: {
+    backgroundColor: '#333',
+    color: '#EEE',
+    paddingTop: 8,
+    width: 100,
+    fontSize: 20,
+    textAlign: 'center',
+  },
   inputText: {
     flex: 1,
     paddingLeft: 10,
     paddingRight: 10,
   },
-  inputButton: {
+  addButton: {
     height: 60,
     width: 60,
     borderWidth: 0,
@@ -222,8 +255,12 @@ const styles = StyleSheet.create({
   modal: {
     height: 400,
   },
-  buttons: {
+  inputButtons: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    marginTop: 10,
   },
+  inputButton: {
+    width: 120,
+  }
 });
