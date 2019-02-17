@@ -7,6 +7,7 @@ import {
   FlatList,
   KeyboardAvoidingView,
   Text,
+  TextInput,
 } from 'react-native';
 
 import { 
@@ -133,14 +134,6 @@ class MemoScreen extends React.Component {
         >
           <View style={styles.modal}>
             <View style={styles.inputView}>
-              <Text style={styles.inputLabel}>Title</Text>
-              <Input
-                onChangeText={(text) => this.setState({inputText: text})}
-                value={this.state.inputText}
-                containerStyle={styles.inputText}
-              />
-            </View>
-            <View style={styles.inputView}>
               <Text style={styles.inputLabel}>Date</Text>
               <DatePicker
                 style={{width: 200}}
@@ -148,6 +141,16 @@ class MemoScreen extends React.Component {
                 confirmBtnText='Confirm'
                 cancelBtnText='Cancel'
                 onDateChange={(date) => {this.setState({inputDate: date})}}
+              />
+            </View>
+            <View style={styles.inputView}>
+              <Text style={styles.inputLabel}>Memo</Text>
+              <Input
+                onChangeText={(text) => this.setState({inputText: text})}
+                value={this.state.inputText}
+                multiline={true}
+                numberOfLines={10}
+                containerStyle={styles.inputText}
               />
             </View>
             <View style={styles.inputButtons}>
@@ -244,6 +247,9 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 10,
     paddingRight: 10,
+    height: 300,
+    borderColor: 'gray',
+    borderWidth: 1,
   },
   addButton: {
     height: 60,
@@ -253,7 +259,7 @@ const styles = StyleSheet.create({
     borderRadius: 48,
   },
   modal: {
-    height: 400,
+    height: 440,
   },
   inputButtons: {
     flexDirection: 'row',
