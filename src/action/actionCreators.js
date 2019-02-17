@@ -1,9 +1,10 @@
 import { MEMO } from './actions'
 
-export const addMemo = (text) => {
+export const addMemo = (content, date) => {
   return {
     type: MEMO.ADD,
-    text,
+    content,
+    date,
   }
 }
 

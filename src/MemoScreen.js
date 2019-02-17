@@ -7,7 +7,6 @@ import {
   FlatList,
   KeyboardAvoidingView,
   Text,
-  TextInput,
 } from 'react-native';
 
 import { 
@@ -44,14 +43,15 @@ class MemoScreen extends React.Component {
   }
 
   addItem = () => {
-    const title = this.state.inputText
-    if (title === "") {
+    const content = this.state.inputText
+    if (content === "") {
       return;
     }
 
-    this.props.addMemo(title)
+    this.props.addMemo(content, this.state.inputDate)
     this.setState({
       inputText: "",
+      inputDate: "",
     })
 
     this.closeAddMemoWindow()
@@ -80,7 +80,7 @@ class MemoScreen extends React.Component {
     const filterText = this.state.filterText
     let memos = this.props.memos
     if (filterText !== "") {
-      memos = memos.filter(memo => memo.title.includes(filterText))
+      memos = memos.filter(memo => memo.content.includes(filterText))
     }
     const platform = Platform.OS === 'ios' ? 'ios' : 'android'
 
@@ -104,7 +104,9 @@ class MemoScreen extends React.Component {
                 autoClose={true}
               >
                 <ListItem
-                  title={item.title}
+                  title={item.content}
+                  subtitle={item.date}
+                  subtitleStyle={{fontSize: 12, color: 'gray'}}
                   bottomDivider
                 />
               </Swipeout>
@@ -140,6 +142,7 @@ class MemoScreen extends React.Component {
                 date={this.state.inputDate}
                 confirmBtnText='Confirm'
                 cancelBtnText='Cancel'
+                format='YYYY/MM/DD'
                 onDateChange={(date) => {this.setState({inputDate: date})}}
               />
             </View>
@@ -194,8 +197,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addMemo(text) {
-      dispatch(addMemo(text))
+    addMemo(content, date) {
+      dispatch(addMemo(content, date))
     },
     deleteMemo(index) {
       dispatch(deleteMemo(index))
