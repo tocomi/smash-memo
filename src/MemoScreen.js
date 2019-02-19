@@ -160,18 +160,6 @@ class MemoScreen extends React.Component {
               <Button
                 icon={
                   <Icon
-                    name='check-circle'
-                    size={30}
-                    color='white'
-                  />
-                }
-                title=""
-                onPress={() => this.addItem()}
-                style={styles.inputButton}
-              />
-              <Button
-                icon={
-                  <Icon
                     name='x-circle'
                     size={30}
                     color='white'
@@ -179,6 +167,18 @@ class MemoScreen extends React.Component {
                 }
                 title=""
                 onPress={() => this.refs.addMemoWindow.close()}
+                style={styles.inputButton}
+              />
+              <Button
+                icon={
+                  <Icon
+                    name='check-circle'
+                    size={30}
+                    color='white'
+                  />
+                }
+                title=""
+                onPress={() => this.addItem()}
                 style={styles.inputButton}
               />
             </View>
