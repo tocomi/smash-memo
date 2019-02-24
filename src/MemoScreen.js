@@ -177,6 +177,7 @@ class MemoScreen extends React.Component {
                 title=""
                 onPress={() => this.refs.addMemoWindow.close()}
                 style={styles.inputButton}
+                raised={true}
               />
               <Button
                 icon={
@@ -189,6 +190,7 @@ class MemoScreen extends React.Component {
                 title=""
                 onPress={() => this.addItem()}
                 style={styles.inputButton}
+                raised={true}
               />
             </View>
           </View>
