@@ -14,3 +14,15 @@ export const deleteMemo = (index) => {
     index,
   }
 }
+
+export const openDetail = () => {
+  return {
+    type: MEMO.OPEN_DETAIL,
+  }
+}
+
+export const closeDetail = () => {
+  return {
+    type: MEMO.CLOSE_DETAIL,
+  }
+}

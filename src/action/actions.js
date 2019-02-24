@@ -1,4 +1,6 @@
 export const MEMO = {
   ADD: 'ADD_MEMO',
   DELETE: 'DELETE_MEMO',
+  OPEN_DETAIL: 'OPEM_DETAIL',
+  CLOSE_DETAIL: 'CLOSE_DETAIL',
 }

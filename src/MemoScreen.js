@@ -18,8 +18,8 @@ import {
 
 import Icon from 'react-native-vector-icons/Feather'
 import Swipeout from 'react-native-swipeout'
-import Modal from 'react-native-modalbox';
-import DatePicker from 'react-native-datepicker'
+
+import MemoDetail from './component/MemoDetail'
 
 import {
   ifIphoneX,
@@ -27,7 +27,7 @@ import {
 } from 'react-native-iphone-x-helper'
 
 import { connect } from 'react-redux'
-import { addMemo, deleteMemo } from './action/actionCreators'
+import { deleteMemo, openDetail } from './action/actionCreators'
 
 const STATUSBAR_HEIGHT = getStatusBarHeight()
 
@@ -134,67 +134,13 @@ class MemoScreen extends React.Component {
               />
             }
             title=""
-            onPress={() => this.refs.addMemoWindow.open()}
+            onPress={() => this.props.openDetail()}
             buttonStyle={styles.addButton}
           />
         </View>
 
-        <Modal
-          style={styles.modal}
-          ref={"addMemoWindow"}
-        >
-          <View style={styles.modal}>
-            <View style={styles.inputView}>
-              <Text style={styles.inputLabel}>Date</Text>
-              <DatePicker
-                style={{width: 200}}
-                date={this.state.inputDate}
-                confirmBtnText='Confirm'
-                cancelBtnText='Cancel'
-                format='YYYY/MM/DD'
-                onDateChange={(date) => {this.setState({inputDate: date})}}
-              />
-            </View>
-            <View style={styles.inputView}>
-              <Text style={styles.inputLabel}>Memo</Text>
-              <Input
-                onChangeText={(text) => this.setState({inputText: text})}
-                value={this.state.inputText}
-                multiline={true}
-                numberOfLines={10}
-                containerStyle={styles.inputText}
-              />
-            </View>
-            <View style={styles.inputButtons}>
-              <Button
-                icon={
-                  <Icon
-                    name='x-circle'
-                    size={30}
-                    color='white'
-                  />
-                }
-                title=""
-                onPress={() => this.refs.addMemoWindow.close()}
-                style={styles.inputButton}
-                raised={true}
-              />
-              <Button
-                icon={
-                  <Icon
-                    name='check-circle'
-                    size={30}
-                    color='white'
-                  />
-                }
-                title=""
-                onPress={() => this.addItem()}
-                style={styles.inputButton}
-                raised={true}
-              />
-            </View>
-          </View>
-        </Modal>
+        <MemoDetail />
+
       </KeyboardAvoidingView>
     );
   }
@@ -208,11 +154,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addMemo(content, date) {
-      dispatch(addMemo(content, date))
-    },
     deleteMemo(index) {
       dispatch(deleteMemo(index))
+    },
+    openDetail() {
+      dispatch(openDetail())
     },
   }
 }
@@ -242,29 +188,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     paddingRight: 10,
   },
-  inputView: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 10,
-  },
-  inputLabel: {
-    backgroundColor: '#333',
-    color: '#EEE',
-    paddingTop: 8,
-    width: 100,
-    fontSize: 20,
-    textAlign: 'center',
-  },
-  inputText: {
-    flex: 1,
-    paddingLeft: 10,
-    paddingRight: 10,
-    height: 300,
-    borderColor: 'gray',
-    borderWidth: 1,
-  },
   addButton: {
     height: 60,
     width: 60,
@@ -272,15 +195,4 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
     borderRadius: 48,
   },
-  modal: {
-    height: 440,
-  },
-  inputButtons: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 10,
-  },
-  inputButton: {
-    width: 120,
-  }
 });

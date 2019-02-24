@@ -3,6 +3,7 @@ import { MEMO } from '../action/actions'
 const initialState = {
   memos: [],
   currentIndex: 0,
+  isDetailOpen: false,
 }
 
 const memos = (state = initialState, action) => {
@@ -19,6 +20,16 @@ const memos = (state = initialState, action) => {
       return {
         ...state,
         memos: memos,
+      }
+    case MEMO.OPEN_DETAIL:
+      return {
+        ...state,
+        isDetailOpen: true,
+      }
+    case MEMO.CLOSE_DETAIL:
+      return {
+        ...state,
+        isDetailOpen: false,
       }
     default:
       return state
