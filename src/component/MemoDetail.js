@@ -82,6 +82,7 @@ class MemoDetail extends React.Component {
               multiline={true}
               numberOfLines={10}
               containerStyle={styles.inputText}
+              inputStyle={{ height: 270 }}
             />
           </View>
           <View style={styles.inputButtons}>
@@ -160,7 +161,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 10,
     paddingRight: 10,
-    height: 300,
+    height: 280,
     borderColor: 'gray',
     borderWidth: 1,
   },
