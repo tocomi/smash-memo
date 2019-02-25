@@ -60,6 +60,7 @@ class MemoDetail extends React.Component {
       <Modal
         style={styles.modal}
         isOpen={this.props.isDetailOpen}
+        onClosed={() => this.props.closeDetail()}
       >
         <View style={styles.modal}>
           <View style={styles.inputView}>
@@ -95,6 +96,7 @@ class MemoDetail extends React.Component {
               title=""
               onPress={() => this.props.closeDetail()}
               style={styles.inputButton}
+              buttonStyle={{ backgroundColor: '#CC4444' }}
               raised={true}
             />
             <Button
@@ -108,6 +110,7 @@ class MemoDetail extends React.Component {
               title=""
               onPress={() => this.addItem()}
               style={styles.inputButton}
+              buttonStyle={{ backgroundColor: '#44CC44' }}
               raised={true}
             />
           </View>

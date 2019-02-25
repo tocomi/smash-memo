@@ -6,12 +6,10 @@ import {
   ScrollView,
   FlatList,
   KeyboardAvoidingView,
-  Text,
 } from 'react-native';
 
 import { 
   SearchBar,
-  Input,
   Button,
   ListItem,
 } from 'react-native-elements';
