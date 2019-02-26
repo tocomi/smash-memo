@@ -8,6 +8,7 @@ import {
 import { 
   Input,
   Button,
+  Avatar,
 } from 'react-native-elements';
 
 import Icon from 'react-native-vector-icons/Feather'
@@ -64,6 +65,11 @@ class MemoDetail extends React.Component {
       >
         <View style={styles.modal}>
           <View style={styles.inputView}>
+            <Text style={styles.inputLabel}>Character</Text>
+            <Avatar rounded size="medium"></Avatar>
+            <Avatar rounded size="medium"></Avatar>
+          </View>
+          <View style={styles.inputView}>
             <Text style={styles.inputLabel}>Date</Text>
             <DatePicker
               style={{width: 200}}
@@ -82,7 +88,7 @@ class MemoDetail extends React.Component {
               multiline={true}
               numberOfLines={10}
               containerStyle={styles.inputText}
-              inputStyle={{ height: 270 }}
+              inputStyle={{ height: 200 }}
             />
           </View>
           <View style={styles.inputButtons}>
@@ -161,7 +167,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 10,
     paddingRight: 10,
-    height: 280,
+    height: 210,
     borderColor: 'gray',
     borderWidth: 1,
   },
