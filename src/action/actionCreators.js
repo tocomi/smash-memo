@@ -26,3 +26,15 @@ export const closeDetail = () => {
     type: MEMO.CLOSE_DETAIL,
   }
 }
+
+export const openCharacter = () => {
+  return {
+    type: MEMO.OPEN_CHARACTER,
+  }
+}
+
+export const closeCharacter = () => {
+  return {
+    type: MEMO.CLOSE_CHARACTER,
+  }
+}

@@ -16,7 +16,7 @@ import Modal from 'react-native-modalbox';
 import DatePicker from 'react-native-datepicker'
 
 import { connect } from 'react-redux'
-import { addMemo, closeDetail } from '../action/actionCreators'
+import { addMemo, closeDetail, openCharacter } from '../action/actionCreators'
 
 class MemoDetail extends React.Component {
 
@@ -66,7 +66,11 @@ class MemoDetail extends React.Component {
         <View style={styles.modal}>
           <View style={styles.inputView}>
             <Text style={styles.inputLabel}>Character</Text>
-            <Avatar rounded size="medium"></Avatar>
+            <Avatar
+              rounded
+              size="medium"
+              onPress={() => {this.props.openCharacter()}}
+            />
             <Avatar rounded size="medium"></Avatar>
           </View>
           <View style={styles.inputView}>
@@ -131,6 +135,7 @@ const mapStateToProps = (state) => {
   return {
     memos: state.memos.memos,
     isDetailOpen: state.memos.isDetailOpen,
+    isCharacterOpen: state.memos.isCharacterOpen,
   }
 }
 
@@ -141,6 +146,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     closeDetail() {
       dispatch(closeDetail())
+    },
+    openCharacter() {
+      dispatch(openCharacter())
     }
   }
 }

@@ -4,6 +4,7 @@ const initialState = {
   memos: [],
   currentIndex: 0,
   isDetailOpen: false,
+  isCharacterOpen: false,
 }
 
 const memos = (state = initialState, action) => {
@@ -30,6 +31,16 @@ const memos = (state = initialState, action) => {
       return {
         ...state,
         isDetailOpen: false,
+      }
+    case MEMO.OPEN_CHARACTER:
+      return {
+        ...state,
+        isCharacterOpen: true,
+      }
+    case MEMO.CLOSE_CHARACTER:
+      return {
+        ...state,
+        isCharacterOpen: false,
       }
     default:
       return state
