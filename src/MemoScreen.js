@@ -18,6 +18,7 @@ import Icon from 'react-native-vector-icons/Feather'
 import Swipeout from 'react-native-swipeout'
 
 import MemoDetail from './component/MemoDetail'
+import CharacterSelect from './component/CharacterSelect'
 
 import {
   ifIphoneX,
@@ -137,7 +138,8 @@ class MemoScreen extends React.Component {
           />
         </View>
 
-        <MemoDetail />
+        <MemoDetail/>
+        <CharacterSelect/>
 
       </KeyboardAvoidingView>
     );

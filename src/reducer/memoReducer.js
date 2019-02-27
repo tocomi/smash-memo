@@ -1,10 +1,16 @@
 import { MEMO } from '../action/actions'
+import { TARGET_TYPE } from '../type/targetType'
 
 const initialState = {
   memos: [],
   currentIndex: 0,
   isDetailOpen: false,
   isCharacterOpen: false,
+  filteredMyCharacter: '',
+  filteredEnemyCharacter: '',
+  selectedMyCharacter: '',
+  selectedEnemyCharacter: '',
+  targetType: null,
 }
 
 const memos = (state = initialState, action) => {
@@ -41,6 +47,29 @@ const memos = (state = initialState, action) => {
       return {
         ...state,
         isCharacterOpen: false,
+      }
+    case MEMO.SET_CHARACTER:
+      switch(state.targetType) {
+        case TARGET_TYPE.FILTERED_MY:
+          return {
+            ...state,
+            filteredMyCharacter: action.character,
+          }
+        case TARGET_TYPE.FILTERED_ENEMY:
+          return {
+            ...state,
+            filteredEnemyCharacter: action.character,
+          }
+        case TARGET_TYPE.SELECTED_MY:
+          return {
+            ...state,
+            selectedMyCharacter: action.character,
+          }
+        case TARGET_TYPE.SELECTED_ENEMY:
+          return {
+            ...state,
+            selectedEnemyCharacter: action.character,
+          }
       }
     default:
       return state

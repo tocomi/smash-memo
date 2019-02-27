@@ -38,3 +38,10 @@ export const closeCharacter = () => {
     type: MEMO.CLOSE_CHARACTER,
   }
 }
+
+export const setCharacter = (character) => {
+  return {
+    type: MEMO.SET_CHARACTER,
+    character,
+  }
+}
