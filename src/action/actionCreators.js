@@ -27,9 +27,10 @@ export const closeDetail = () => {
   }
 }
 
-export const openCharacter = () => {
+export const openCharacter = (targetType) => {
   return {
     type: MEMO.OPEN_CHARACTER,
+    targetType,
   }
 }
 

@@ -42,6 +42,7 @@ const memos = (state = initialState, action) => {
       return {
         ...state,
         isCharacterOpen: true,
+        targetType: action.targetType,
       }
     case MEMO.CLOSE_CHARACTER:
       return {

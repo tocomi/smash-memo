@@ -11,12 +11,17 @@ import {
 import Modal from 'react-native-modalbox';
 
 import { connect } from 'react-redux'
-import { closeCharacter } from '../action/actionCreators'
+import { closeCharacter, setCharacter } from '../action/actionCreators'
 
 class CharacterSelect extends React.Component {
 
   constructor(props) {
     super(props)
+  }
+
+  setCharacter = (character) => {
+    this.props.setCharacter(character)
+    this.props.closeCharacter()
   }
 
   render() {
@@ -30,13 +35,25 @@ class CharacterSelect extends React.Component {
           <Avatar
             rounded
             size="medium"
-            title="Mario"
+            title="M"
+            onPress={() => this.setCharacter('M')}
+          />
+          <Avatar
+            rounded
+            size="medium"
+            title="DK"
+            onPress={() => this.setCharacter('DK')}
+          />
+          <Avatar
+            rounded
+            size="medium"
+            title="CF"
+            onPress={() => this.setCharacter('CF')}
           />
         </View>
       </Modal>
     )
   }
-
 }
 
 const mapStateToProps = (state) => {
@@ -49,6 +66,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     closeCharacter() {
       dispatch(closeCharacter())
+    },
+    setCharacter(character) {
+      dispatch(setCharacter(character))
     },
   }
 }

@@ -18,6 +18,8 @@ import DatePicker from 'react-native-datepicker'
 import { connect } from 'react-redux'
 import { addMemo, closeDetail, openCharacter } from '../action/actionCreators'
 
+import { TARGET_TYPE } from '../type/targetType'
+
 class MemoDetail extends React.Component {
 
   constructor(props) {
@@ -69,9 +71,15 @@ class MemoDetail extends React.Component {
             <Avatar
               rounded
               size="medium"
-              onPress={() => {this.props.openCharacter()}}
+              title={this.props.selectedMyCharacter}
+              onPress={() => {this.props.openCharacter(TARGET_TYPE.SELECTED_MY)}}
             />
-            <Avatar rounded size="medium"></Avatar>
+            <Avatar
+              rounded
+              size="medium"
+              title={this.props.selectedEnemyCharacter}
+              onPress={() => {this.props.openCharacter(TARGET_TYPE.SELECTED_ENEMY)}}
+            />
           </View>
           <View style={styles.inputView}>
             <Text style={styles.inputLabel}>Date</Text>
@@ -136,6 +144,8 @@ const mapStateToProps = (state) => {
     memos: state.memos.memos,
     isDetailOpen: state.memos.isDetailOpen,
     isCharacterOpen: state.memos.isCharacterOpen,
+    selectedMyCharacter: state.memos.selectedMyCharacter,
+    selectedEnemyCharacter: state.memos.selectedEnemyCharacter,
   }
 }
 
@@ -147,8 +157,8 @@ const mapDispatchToProps = (dispatch) => {
     closeDetail() {
       dispatch(closeDetail())
     },
-    openCharacter() {
-      dispatch(openCharacter())
+    openCharacter(targetType) {
+      dispatch(openCharacter(targetType))
     }
   }
 }
