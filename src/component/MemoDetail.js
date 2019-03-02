@@ -68,18 +68,24 @@ class MemoDetail extends React.Component {
         <View style={styles.modal}>
           <View style={styles.inputView}>
             <Text style={styles.inputLabel}>Character</Text>
-            <Avatar
-              rounded
-              size="medium"
-              title={this.props.selectedMyCharacter}
-              onPress={() => {this.props.openCharacter(TARGET_TYPE.SELECTED_MY)}}
-            />
-            <Avatar
-              rounded
-              size="medium"
-              title={this.props.selectedEnemyCharacter}
-              onPress={() => {this.props.openCharacter(TARGET_TYPE.SELECTED_ENEMY)}}
-            />
+            <View style={styles.selectedCharacterView}>
+              <Text>My</Text>
+              <Avatar
+                rounded
+                size="medium"
+                title={this.props.selectedMyCharacter}
+                onPress={() => {this.props.openCharacter(TARGET_TYPE.SELECTED_MY)}}
+                containerStyle={styles.selectedCharacterAvatar}
+              />
+              <Text>Enemy</Text>
+              <Avatar
+                rounded
+                size="medium"
+                title={this.props.selectedEnemyCharacter}
+                onPress={() => {this.props.openCharacter(TARGET_TYPE.SELECTED_ENEMY)}}
+                containerStyle={styles.selectedCharacterAvatar}
+              />
+            </View>
           </View>
           <View style={styles.inputView}>
             <Text style={styles.inputLabel}>Date</Text>
@@ -172,6 +178,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 10,
     marginRight: 10,
+  },
+  selectedCharacterView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  selectedCharacterAvatar: {
+    marginRight: 30,
   },
   inputLabel: {
     backgroundColor: '#333',
