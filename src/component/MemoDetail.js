@@ -190,12 +190,12 @@ const styles = StyleSheet.create({
   },
   selectedMyCharacterAvatar: {
     borderWidth: 2,
-    borderColor: 'red',
+    borderColor: '#CC2844',
     borderRadius: 25,
   },
   selectedEnemyCharacterAvatar: {
     borderWidth: 2,
-    borderColor: 'blue',
+    borderColor: '#288ADD',
     borderRadius: 25,
   },
   inputLabel: {

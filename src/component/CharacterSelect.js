@@ -35,6 +35,7 @@ class CharacterSelect extends React.Component {
           key={character.name}
           source={character.image}
           onPress={() => this.setCharacter(character.name)}
+          avatarStyle={styles.characterSelectAvatar}
         />
       )
     })
@@ -80,5 +81,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flex: 2,
     flexWrap: 'wrap',
+  },
+  characterSelectAvatar: {
+    borderWidth: 2,
+    borderColor: '#CCC',
+    borderRadius: 25,
   },
 })
