@@ -1,7 +1,7 @@
 export const characters = [
   {
     name: 'any',
-    image: require('../../assets/character/any.jpg')
+    image: require('../../assets/character/any.png')
   },
   {
     name: 'mario',
