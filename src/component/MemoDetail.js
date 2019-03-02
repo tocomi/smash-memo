@@ -76,6 +76,7 @@ class MemoDetail extends React.Component {
                 source={this.props.selectedMyCharacter.image}
                 onPress={() => {this.props.openCharacter(TARGET_TYPE.SELECTED_MY)}}
                 containerStyle={styles.selectedCharacterAvatar}
+                avatarStyle={styles.selectedMyCharacterAvatar}
               />
               <Text>Enemy</Text>
               <Avatar
@@ -84,6 +85,7 @@ class MemoDetail extends React.Component {
                 source={this.props.selectedEnemyCharacter.image}
                 onPress={() => {this.props.openCharacter(TARGET_TYPE.SELECTED_ENEMY)}}
                 containerStyle={styles.selectedCharacterAvatar}
+                avatarStyle={styles.selectedEnemyCharacterAvatar}
               />
             </View>
           </View>
@@ -185,6 +187,16 @@ const styles = StyleSheet.create({
   },
   selectedCharacterAvatar: {
     marginRight: 30,
+  },
+  selectedMyCharacterAvatar: {
+    borderWidth: 2,
+    borderColor: 'red',
+    borderRadius: 25,
+  },
+  selectedEnemyCharacterAvatar: {
+    borderWidth: 2,
+    borderColor: 'blue',
+    borderRadius: 25,
   },
   inputLabel: {
     backgroundColor: '#333',
