@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   },
   selectedMyCharacterAvatar: {
     borderWidth: 2,
-    borderColor: '#CC2844',
+    borderColor: '#EA6A7A',
     borderRadius: 25,
   },
   selectedEnemyCharacterAvatar: {

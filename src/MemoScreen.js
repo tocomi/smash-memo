@@ -125,8 +125,8 @@ class MemoScreen extends React.Component {
                   subtitle={item.date}
                   subtitleStyle={{fontSize: 12, color: 'gray'}}
                   bottomDivider
-                  leftAvatar={{ source: item.myCharacter.image }}
-                  rightAvatar={{ source: item.enemyCharacter.image, size: 'small' }}
+                  leftAvatar={{ source: item.myCharacter.image, avatarStyle: styles.listMyAvatar }}
+                  rightAvatar={{ source: item.enemyCharacter.image, avatarStyle: styles.listEnemyAvatar, size: 'small' }}
                 />
               </Swipeout>
             }
@@ -140,12 +140,16 @@ class MemoScreen extends React.Component {
             size="medium"
             source={this.props.filteredMyCharacter.image}
             onPress={() => {this.props.openCharacter(TARGET_TYPE.FILTERED_MY)}}
+            containerStyle={styles.filterAvatar}
+            avatarStyle={styles.filterMyAvatar}
           />
           <Avatar
             rounded
             size="medium"
             source={this.props.filteredEnemyCharacter.image}
             onPress={() => {this.props.openCharacter(TARGET_TYPE.FILTERED_ENEMY)}}
+            containerStyle={styles.filterAvatar}
+            avatarStyle={styles.filterEnemyAvatar}
           />
           <Icon
             raised
@@ -202,6 +206,16 @@ const styles = StyleSheet.create({
   memoList: {
     flex: 1,
   },
+  listMyAvatar: {
+    borderWidth: 2,
+    borderColor: '#EA6A7A',
+    borderRadius: 20,
+  },
+  listEnemyAvatar: {
+    borderWidth: 2,
+    borderColor: '#288ADD',
+    borderRadius: 16,
+  },
   input: {
     ...ifIphoneX({
       height: 90,
@@ -212,6 +226,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     paddingRight: 10,
+  },
+  filterAvatar: {
+    marginTop: 10,
+    marginRight: 10,
+  },
+  filterMyAvatar: {
+    borderWidth: 2,
+    borderColor: '#EA6A7A',
+    borderRadius: 25,
+  },
+  filterEnemyAvatar: {
+    borderWidth: 2,
+    borderColor: '#288ADD',
+    borderRadius: 25,
   },
   addButton: {
     height: 60,
