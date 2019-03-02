@@ -17,7 +17,13 @@ const initialState = {
 const memos = (state = initialState, action) => {
   switch (action.type) {
     case MEMO.ADD:
-      const newMemo = { content: action.content, date: action.date, index: state.currentIndex }
+      const newMemo = {
+        content: action.content,
+        date: action.date,
+        myCharacter: state.selectedMyCharacter,
+        enemyCharacter: state.selectedEnemyCharacter,
+        index: state.currentIndex
+      }
       return {
         ...state,
         memos: [ ...state.memos, newMemo ],

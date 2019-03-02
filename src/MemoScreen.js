@@ -115,6 +115,8 @@ class MemoScreen extends React.Component {
                   subtitle={item.date}
                   subtitleStyle={{fontSize: 12, color: 'gray'}}
                   bottomDivider
+                  leftAvatar={{ source: item.myCharacter.image }}
+                  rightAvatar={{ source: item.enemyCharacter.image, size: 'small' }}
                 />
               </Swipeout>
             }
