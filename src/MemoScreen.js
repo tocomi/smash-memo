@@ -165,8 +165,12 @@ export default connect(mapStateToProps, mapDispatchToProps)(MemoScreen)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: STATUSBAR_HEIGHT,
     backgroundColor: '#fff',
+    ...ifIphoneX({
+      paddingTop: STATUSBAR_HEIGHT + 10,
+    }, {
+      paddingTop: STATUSBAR_HEIGHT,
+    }),
   },
   filter: {
     height: 30,
