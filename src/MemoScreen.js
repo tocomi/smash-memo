@@ -10,11 +10,10 @@ import {
 
 import { 
   SearchBar,
-  Button,
   ListItem,
+  Icon,
 } from 'react-native-elements';
 
-import Icon from 'react-native-vector-icons/Feather'
 import Swipeout from 'react-native-swipeout'
 
 import MemoDetail from './component/MemoDetail'
@@ -124,17 +123,13 @@ class MemoScreen extends React.Component {
         </ScrollView>
 
         <View style={styles.input}>
-          <Button
-            icon={
-              <Icon
-                name='plus'
-                size={30}
-                color='white'
-              />
-            }
-            title=""
+          <Icon
+            raised
+            type='octicon'
+            name='pencil'
+            color='#288ABD'
+            reverse={true}
             onPress={() => this.props.openDetail()}
-            buttonStyle={styles.addButton}
           />
         </View>
 
