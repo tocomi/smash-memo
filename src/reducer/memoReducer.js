@@ -1,15 +1,16 @@
 import { MEMO } from '../action/actions'
 import { TARGET_TYPE } from '../type/targetType'
+import { characters } from '../data/characters'
 
 const initialState = {
   memos: [],
   currentIndex: 0,
   isDetailOpen: false,
   isCharacterOpen: false,
-  filteredMyCharacter: '',
-  filteredEnemyCharacter: '',
-  selectedMyCharacter: '',
-  selectedEnemyCharacter: '',
+  filteredMyCharacter: characters[0],
+  filteredEnemyCharacter: characters[0],
+  selectedMyCharacter: characters[0],
+  selectedEnemyCharacter: characters[0],
   targetType: null,
 }
 
@@ -54,22 +55,22 @@ const memos = (state = initialState, action) => {
         case TARGET_TYPE.FILTERED_MY:
           return {
             ...state,
-            filteredMyCharacter: action.character,
+            filteredMyCharacter: characters.find((character) => character.name === action.character),
           }
         case TARGET_TYPE.FILTERED_ENEMY:
           return {
             ...state,
-            filteredEnemyCharacter: action.character,
+            filteredEnemyCharacter: characters.find((character) => character.name === action.character),
           }
         case TARGET_TYPE.SELECTED_MY:
           return {
             ...state,
-            selectedMyCharacter: action.character,
+            selectedMyCharacter: characters.find((character) => character.name === action.character),
           }
         case TARGET_TYPE.SELECTED_ENEMY:
           return {
             ...state,
-            selectedEnemyCharacter: action.character,
+            selectedEnemyCharacter: characters.find((character) => character.name === action.character),
           }
       }
     default:

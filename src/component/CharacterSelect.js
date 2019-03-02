@@ -20,8 +20,8 @@ class CharacterSelect extends React.Component {
     super(props)
   }
 
-  setCharacter = (character) => {
-    this.props.setCharacter(character)
+  setCharacter = (characterName) => {
+    this.props.setCharacter(characterName)
     this.props.closeCharacter()
   }
 
@@ -64,8 +64,8 @@ const mapDispatchToProps = (dispatch) => {
     closeCharacter() {
       dispatch(closeCharacter())
     },
-    setCharacter(character) {
-      dispatch(setCharacter(character))
+    setCharacter(characterName) {
+      dispatch(setCharacter(characterName))
     },
   }
 }

@@ -73,7 +73,7 @@ class MemoDetail extends React.Component {
               <Avatar
                 rounded
                 size="medium"
-                title={this.props.selectedMyCharacter}
+                source={this.props.selectedMyCharacter.image}
                 onPress={() => {this.props.openCharacter(TARGET_TYPE.SELECTED_MY)}}
                 containerStyle={styles.selectedCharacterAvatar}
               />
@@ -81,7 +81,7 @@ class MemoDetail extends React.Component {
               <Avatar
                 rounded
                 size="medium"
-                title={this.props.selectedEnemyCharacter}
+                source={this.props.selectedEnemyCharacter.image}
                 onPress={() => {this.props.openCharacter(TARGET_TYPE.SELECTED_ENEMY)}}
                 containerStyle={styles.selectedCharacterAvatar}
               />
