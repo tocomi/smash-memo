@@ -12,6 +12,7 @@ import {
   SearchBar,
   ListItem,
   Icon,
+  Avatar,
 } from 'react-native-elements';
 
 import Swipeout from 'react-native-swipeout'
@@ -25,7 +26,9 @@ import {
 } from 'react-native-iphone-x-helper'
 
 import { connect } from 'react-redux'
-import { deleteMemo, openDetail } from './action/actionCreators'
+import { deleteMemo, openDetail, openCharacter } from './action/actionCreators'
+
+import { TARGET_TYPE } from './type/targetType'
 
 const STATUSBAR_HEIGHT = getStatusBarHeight()
 
@@ -86,6 +89,12 @@ class MemoScreen extends React.Component {
   render() {
     const filterText = this.state.filterText
     let memos = this.props.memos
+    if (this.props.filteredMyCharacter.name !== 'any') {
+      memos = memos.filter(memo => memo.myCharacter.name === this.props.filteredMyCharacter.name)
+    }
+    if (this.props.filteredEnemyCharacter.name !== 'any') {
+      memos = memos.filter(memo => memo.enemyCharacter.name === this.props.filteredEnemyCharacter.name)
+    }
     if (filterText !== "") {
       memos = memos.filter(memo => memo.content.includes(filterText))
     }
@@ -93,6 +102,7 @@ class MemoScreen extends React.Component {
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
+        
         <SearchBar
           platform={platform}
           cancelButtonTitle="Cancel"
@@ -125,6 +135,18 @@ class MemoScreen extends React.Component {
         </ScrollView>
 
         <View style={styles.input}>
+          <Avatar
+            rounded
+            size="medium"
+            source={this.props.filteredMyCharacter.image}
+            onPress={() => {this.props.openCharacter(TARGET_TYPE.FILTERED_MY)}}
+          />
+          <Avatar
+            rounded
+            size="medium"
+            source={this.props.filteredEnemyCharacter.image}
+            onPress={() => {this.props.openCharacter(TARGET_TYPE.FILTERED_ENEMY)}}
+          />
           <Icon
             raised
             type='octicon'
@@ -145,7 +167,9 @@ class MemoScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    memos: state.memos.memos
+    memos: state.memos.memos,
+    filteredMyCharacter: state.memos.filteredMyCharacter,
+    filteredEnemyCharacter: state.memos.filteredEnemyCharacter,
   }
 }
 
@@ -156,6 +180,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     openDetail() {
       dispatch(openDetail())
+    },
+    openCharacter(targetType) {
+      dispatch(openCharacter(targetType))
     },
   }
 }
@@ -171,9 +198,6 @@ const styles = StyleSheet.create({
     }, {
       paddingTop: STATUSBAR_HEIGHT,
     }),
-  },
-  filter: {
-    height: 30,
   },
   memoList: {
     flex: 1,
