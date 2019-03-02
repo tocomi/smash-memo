@@ -110,6 +110,8 @@ class MemoScreen extends React.Component {
           onClear={() => this.setState({filterText: ""})}
           value={this.state.filterText}
           placeholder="Type filter text"
+          containerStyle={styles.searchBar}
+          inputContainerStyle={styles.searchBarInput}
         />
 
         <ScrollView style={styles.memoList}>
@@ -155,7 +157,7 @@ class MemoScreen extends React.Component {
             raised
             type='octicon'
             name='pencil'
-            color='#288ABD'
+            color='#EA5A5A'
             reverse={true}
             onPress={() => this.props.openDetail()}
           />
@@ -203,18 +205,23 @@ const styles = StyleSheet.create({
       paddingTop: STATUSBAR_HEIGHT,
     }),
   },
+  searchBar: {
+    backgroundColor: '#FFF',
+    borderColor: '#DDD',
+    borderBottomWidth: 1,
+  },
   memoList: {
     flex: 1,
   },
   listMyAvatar: {
-    borderWidth: 2,
+    borderWidth: 1.5,
     borderColor: '#EA6A7A',
     borderRadius: 20,
   },
   listEnemyAvatar: {
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: '#288ADD',
-    borderRadius: 16,
+    borderRadius: 17,
   },
   input: {
     ...ifIphoneX({
@@ -226,6 +233,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     paddingRight: 10,
+    borderColor: '#DDD',
+    borderWidth: 1,
   },
   filterAvatar: {
     marginTop: 10,
