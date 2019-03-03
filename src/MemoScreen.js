@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   filterAvatar: {
-    marginTop: 10,
+    marginTop: 7,
     marginRight: 10,
   },
   filterMyAvatar: {

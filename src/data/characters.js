@@ -1,9 +1,5 @@
 export const characters = [
   {
-    name: 'any',
-    image: require('../../assets/character/any.png')
-  },
-  {
     name: 'mario',
     image: require('../../assets/character/mario.jpg'),
   },
@@ -50,5 +46,69 @@ export const characters = [
   {
     name: 'purin',
     image: require('../../assets/character/purin.jpg'),
+  },
+  {
+    name: 'purin',
+    image: require('../../assets/character/purin.jpg'),
+  },
+  {
+    name: 'peach',
+    image: require('../../assets/character/peach.jpg'),
+  },
+  {
+    name: 'kuppa',
+    image: require('../../assets/character/kuppa.jpg'),
+  },
+  {
+    name: 'iceclimber',
+    image: require('../../assets/character/iceclimber.jpg'),
+  },
+  {
+    name: 'sheik',
+    image: require('../../assets/character/sheik.jpg'),
+  },
+  {
+    name: 'zelda',
+    image: require('../../assets/character/zelda.jpg'),
+  },
+  {
+    name: 'drmario',
+    image: require('../../assets/character/drmario.jpg'),
+  },
+  {
+    name: 'pichu',
+    image: require('../../assets/character/pichu.jpg'),
+  },
+  {
+    name: 'falco',
+    image: require('../../assets/character/falco.jpg'),
+  },
+  {
+    name: 'marth',
+    image: require('../../assets/character/marth.jpg'),
+  },
+  {
+    name: 'younglink',
+    image: require('../../assets/character/younglink.jpg'),
+  },
+  {
+    name: 'ganon',
+    image: require('../../assets/character/ganon.jpg'),
+  },
+  {
+    name: 'mewtwo',
+    image: require('../../assets/character/mewtwo.jpg'),
+  },
+  {
+    name: 'roy',
+    image: require('../../assets/character/roy.jpg'),
+  },
+  {
+    name: 'gameandwatch',
+    image: require('../../assets/character/gameandwatch.jpg'),
+  },
+  {
+    name: 'any',
+    image: require('../../assets/character/any.png')
   },
 ]
