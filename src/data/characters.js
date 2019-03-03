@@ -48,10 +48,6 @@ export const characters = [
     image: require('../../assets/character/purin.jpg'),
   },
   {
-    name: 'purin',
-    image: require('../../assets/character/purin.jpg'),
-  },
-  {
     name: 'peach',
     image: require('../../assets/character/peach.jpg'),
   },
