@@ -69,7 +69,7 @@ class MemoDetail extends React.Component {
           <View style={styles.inputView}>
             <Text style={styles.inputLabel}>Character</Text>
             <View style={styles.selectedCharacterView}>
-              <Text>My</Text>
+              <Text>You</Text>
               <Avatar
                 rounded
                 size="medium"
