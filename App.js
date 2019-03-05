@@ -1,5 +1,5 @@
 import React from 'react'
-import MemoScreen from './src/MemoScreen'
+import MemoScreen from './src/screen/MemoScreen'
 import { Provider } from 'react-redux'
 import store, { persistor } from './src/store/store'
 import { PersistGate } from 'redux-persist/integration/react'

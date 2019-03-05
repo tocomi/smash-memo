@@ -17,8 +17,8 @@ import {
 
 import Swipeout from 'react-native-swipeout'
 
-import MemoDetail from './component/MemoDetail'
-import CharacterSelect from './component/CharacterSelect'
+import MemoDetail from './MemoDetailScreen'
+import CharacterSelect from './CharacterSelectScreen'
 
 import {
   ifIphoneX,
@@ -26,9 +26,9 @@ import {
 } from 'react-native-iphone-x-helper'
 
 import { connect } from 'react-redux'
-import { deleteMemo, openDetail, openCharacter } from './action/actionCreators'
+import { deleteMemo, openDetail, openCharacter } from '../action/actionCreators'
 
-import { TARGET_TYPE } from './type/targetType'
+import { TARGET_TYPE } from '../type/targetType'
 
 const STATUSBAR_HEIGHT = getStatusBarHeight()
 
