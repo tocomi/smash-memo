@@ -7,10 +7,10 @@ const initialState = {
   currentIndex: 0,
   isDetailOpen: false,
   isCharacterOpen: false,
-  filteredMyCharacter: characters[0],
-  filteredEnemyCharacter: characters[0],
-  selectedMyCharacter: characters[0],
-  selectedEnemyCharacter: characters[0],
+  filteredMyCharacter: characters.slice(-1)[0],
+  filteredEnemyCharacter: characters.slice(-1)[0],
+  selectedMyCharacter: characters.slice(-1)[0],
+  selectedEnemyCharacter: characters.slice(-1)[0],
   targetType: null,
 }
 

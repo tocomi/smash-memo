@@ -6,7 +6,8 @@ import rootReducer from '../reducer/rootReducer'
 const persistConfig = {
   key: 'MEMO',
   storage,
-  whitelist: [ 'memos', 'currentIndex' ]
+  whitelist: [ 'memos', 'currentIndex', 'selectedMyCharacter' ],
+  blacklist: [ 'isDetailOpen', 'isCharacterOpen', 'filteredMyCharacter', 'filteredEnemyCharacter', 'selectedEnemyCharacter']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
