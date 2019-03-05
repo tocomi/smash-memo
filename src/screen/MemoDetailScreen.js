@@ -9,6 +9,7 @@ import {
   Input,
   Button,
   Avatar,
+  Card,
 } from 'react-native-elements';
 
 import Icon from 'react-native-vector-icons/Feather'
@@ -67,7 +68,6 @@ class MemoDetail extends React.Component {
       >
         <View style={styles.modal}>
           <View style={styles.inputView}>
-            <Text style={styles.inputLabel}>Character</Text>
             <View style={styles.selectedCharacterView}>
               <Text>You</Text>
               <Avatar
@@ -90,9 +90,8 @@ class MemoDetail extends React.Component {
             </View>
           </View>
           <View style={styles.inputView}>
-            <Text style={styles.inputLabel}>Date</Text>
             <DatePicker
-              style={{width: 200}}
+              style={{width: '100%'}}
               date={this.state.inputDate}
               confirmBtnText='Confirm'
               cancelBtnText='Cancel'
@@ -101,7 +100,6 @@ class MemoDetail extends React.Component {
             />
           </View>
           <View style={styles.inputView}>
-            <Text style={styles.inputLabel}>Memo</Text>
             <Input
               onChangeText={(text) => this.setState({inputText: text})}
               value={this.state.inputText}
@@ -122,8 +120,7 @@ class MemoDetail extends React.Component {
               }
               title=""
               onPress={() => this.props.closeDetail()}
-              style={styles.inputButton}
-              buttonStyle={{ backgroundColor: '#CC4444' }}
+              buttonStyle={{ backgroundColor: '#CC4444', width: 110 }}
               raised={true}
             />
             <Button
@@ -136,8 +133,7 @@ class MemoDetail extends React.Component {
               }
               title=""
               onPress={() => this.addItem()}
-              style={styles.inputButton}
-              buttonStyle={{ backgroundColor: '#44CC44' }}
+              buttonStyle={{ backgroundColor: '#4A4ACA', width: 110 }}
               raised={true}
             />
           </View>
@@ -176,17 +172,17 @@ export default connect(mapStateToProps, mapDispatchToProps)(MemoDetail)
 const styles = StyleSheet.create({
   inputView: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 10,
+    marginTop: 15,
+    marginLeft: 15,
+    marginRight: 15,
   },
   selectedCharacterView: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-around',
+    width: '100%'
   },
   selectedCharacterAvatar: {
-    marginRight: 30,
+    marginRight: 20,
   },
   selectedMyCharacterAvatar: {
     borderWidth: 2,
@@ -198,14 +194,6 @@ const styles = StyleSheet.create({
     borderColor: '#288ADD',
     borderRadius: 25,
   },
-  inputLabel: {
-    backgroundColor: '#333',
-    color: '#EEE',
-    paddingTop: 8,
-    width: 100,
-    fontSize: 20,
-    textAlign: 'center',
-  },
   inputText: {
     flex: 1,
     paddingLeft: 10,
@@ -215,14 +203,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   modal: {
-    height: 440,
+    height: 420,
+    width: 350,
+    borderRadius: 20,
   },
   inputButtons: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: 10,
   },
-  inputButton: {
-    width: 120,
-  }
 });

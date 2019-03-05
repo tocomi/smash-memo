@@ -77,6 +77,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(CharacterSelect)
 const styles = StyleSheet.create({
   modal: {
     height: 440,
+    width: 350,
+    borderRadius: 20,
   },
   characterView: {
     flexDirection: 'row',
@@ -85,7 +87,7 @@ const styles = StyleSheet.create({
   },
   characterSelectAvatarContainer: {
     marginTop: 10,
-    marginLeft: 10,
+    marginLeft: 7,
   },
   characterSelectAvatar: {
     borderWidth: 2,
