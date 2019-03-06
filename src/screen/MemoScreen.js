@@ -13,6 +13,7 @@ import {
   ListItem,
   Icon,
   Avatar,
+  Text,
 } from 'react-native-elements';
 
 import Swipeout from 'react-native-swipeout'
@@ -137,6 +138,7 @@ class MemoScreen extends React.Component {
         </ScrollView>
 
         <View style={styles.input}>
+          <Text style={{ color: '#AAA' }}>filter</Text>
           <Avatar
             rounded
             size="medium"
