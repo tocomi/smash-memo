@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   },
   selectedCharacterView: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     width: '100%'
   },
   selectedCharacterAvatar: {
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   },
   inputButtons: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     marginTop: 10,
   },
 });
