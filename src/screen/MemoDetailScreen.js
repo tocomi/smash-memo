@@ -111,29 +111,18 @@ class MemoDetail extends React.Component {
           </View>
           <View style={styles.inputButtons}>
             <Button
-              icon={
-                <Icon
-                  name='x-circle'
-                  size={30}
-                  color='white'
-                />
-              }
-              title=""
+              title="Cancel"
+              type="outline"
               onPress={() => this.props.closeDetail()}
-              buttonStyle={{ backgroundColor: '#CC4444', width: 110 }}
+              buttonStyle={{ width: 110, borderColor: "#CA3A3A" }}
+              titleStyle={{ color: "#CA3A3A" }}
               raised={true}
             />
             <Button
-              icon={
-                <Icon
-                  name='check-circle'
-                  size={30}
-                  color='white'
-                />
-              }
-              title=""
+              title="Save"
+              type="outline"
               onPress={() => this.addItem()}
-              buttonStyle={{ backgroundColor: '#4A4ACA', width: 110 }}
+              buttonStyle={{ width: 110 }}
               raised={true}
             />
           </View>
