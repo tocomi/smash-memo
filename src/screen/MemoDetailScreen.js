@@ -110,17 +110,16 @@ class MemoDetail extends React.Component {
           <View style={styles.inputButtons}>
             <Button
               title="Cancel"
-              type="outline"
               onPress={() => this.props.closeDetail()}
-              buttonStyle={{ width: 110, borderColor: "#CA3A3A" }}
-              titleStyle={{ color: "#CA3A3A" }}
+              containerStyle={{ borderBottomLeftRadius: 20 }}
+              buttonStyle={[ styles.buttonStyle, { borderBottomLeftRadius: 20, backgroundColor: '#DA5A5A' }]}
               raised={true}
             />
             <Button
               title="Save"
-              type="outline"
               onPress={() => this.addItem()}
-              buttonStyle={{ width: 110 }}
+              containerStyle={{ borderBottomRightRadius: 20 }}
+              buttonStyle={[ styles.buttonStyle , { borderBottomRightRadius: 20 }]}
               raised={true}
             />
           </View>
@@ -190,7 +189,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   modal: {
-    height: 420,
+    height: 395,
     width: 350,
     borderRadius: 20,
   },
@@ -199,4 +198,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     marginTop: 10,
   },
+  buttonStyle: {
+    width: 175,
+    height: 40,
+    borderRadius: 0,
+  }
 });
