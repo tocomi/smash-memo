@@ -9,10 +9,8 @@ import {
   Input,
   Button,
   Avatar,
-  Card,
 } from 'react-native-elements';
 
-import Icon from 'react-native-vector-icons/Feather'
 import Modal from 'react-native-modalbox';
 import DatePicker from 'react-native-datepicker'
 
