@@ -6,6 +6,7 @@ import {
 
 import { 
   Avatar,
+  Button,
 } from 'react-native-elements';
 
 import Modal from 'react-native-modalbox';
@@ -50,6 +51,11 @@ class CharacterSelect extends React.Component {
         <View style={styles.characterView}>
           {avatarList}
         </View>
+        <Button
+          title="close"
+          buttonStyle={styles.closeButton}
+          onPress={() => this.props.closeCharacter()}
+        />
       </Modal>
     )
   }
@@ -93,5 +99,13 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#CCC',
     borderRadius: 25,
+  },
+  closeButton: {
+    backgroundColor: '#DA5A5A',
+    height: 40,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    borderBottomLeftRadius: 19,
+    borderBottomRightRadius: 19,
   },
 })
