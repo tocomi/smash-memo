@@ -2,6 +2,7 @@ import React from 'react';
 import {
   StyleSheet,
   View,
+  ScrollView,
 } from 'react-native';
 
 import { 
@@ -47,10 +48,13 @@ class CharacterSelect extends React.Component {
         style={styles.modal}
         isOpen={this.props.isCharacterOpen}
         onClosed={() => this.props.closeCharacter()}
+        swipeToClose={false}
       >
-        <View style={styles.characterView}>
-          {avatarList}
-        </View>
+        <ScrollView>
+          <View style={styles.characterView}>
+            {avatarList}
+          </View>
+        </ScrollView>
         <Button
           title="close"
           buttonStyle={styles.closeButton}
