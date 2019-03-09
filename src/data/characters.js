@@ -104,6 +104,78 @@ export const characters = [
     image: require('../../assets/character/gameandwatch.jpg'),
   },
   {
+    name: 'metaknight',
+    image: require('../../assets/character/metaknight.jpg')
+  },
+  {
+    name: 'pit',
+    image: require('../../assets/character/pit.jpg')
+  },
+  {
+    name: 'zerosuitsamus',
+    image: require('../../assets/character/zerosuitsamus.jpg')
+  },
+  {
+    name: 'wario',
+    image: require('../../assets/character/wario.jpg')
+  },
+  {
+    name: 'snake',
+    image: require('../../assets/character/snake.jpg')
+  },
+  {
+    name: 'ike',
+    image: require('../../assets/character/ike.jpg')
+  },
+  {
+    name: 'zenigame',
+    image: require('../../assets/character/zenigame.jpg')
+  },
+  {
+    name: 'fusigisou',
+    image: require('../../assets/character/fusigisou.jpg')
+  },
+  {
+    name: 'lizardon',
+    image: require('../../assets/character/lizardon.jpg')
+  },
+  {
+    name: 'diddy',
+    image: require('../../assets/character/diddy.jpg')
+  },
+  {
+    name: 'lucas',
+    image: require('../../assets/character/lucas.jpg')
+  },
+  {
+    name: 'sonic',
+    image: require('../../assets/character/sonic.jpg')
+  },
+  {
+    name: 'dedede',
+    image: require('../../assets/character/dedede.jpg')
+  },
+  {
+    name: 'pikminandolimar',
+    image: require('../../assets/character/pikminandolimar.jpg')
+  },
+  {
+    name: 'lucario',
+    image: require('../../assets/character/lucario.jpg')
+  },
+  {
+    name: 'robot',
+    image: require('../../assets/character/robot.jpg')
+  },
+  {
+    name: 'toonlink',
+    image: require('../../assets/character/toonlink.jpg')
+  },
+  {
+    name: 'wolf',
+    image: require('../../assets/character/wolf.jpg')
+  },
+  {
     name: 'any',
     image: require('../../assets/character/any.png')
   },
