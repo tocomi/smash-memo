@@ -138,23 +138,24 @@ class MemoScreen extends React.Component {
         </ScrollView>
 
         <View style={styles.input}>
-          <Text style={{ color: '#AAA' }}>filter</Text>
-          <Avatar
-            rounded
-            size="medium"
-            source={this.props.filteredMyCharacter.image}
-            onPress={() => {this.props.openCharacter(TARGET_TYPE.FILTERED_MY)}}
-            containerStyle={styles.filterAvatar}
-            avatarStyle={styles.filterMyAvatar}
-          />
-          <Avatar
-            rounded
-            size="medium"
-            source={this.props.filteredEnemyCharacter.image}
-            onPress={() => {this.props.openCharacter(TARGET_TYPE.FILTERED_ENEMY)}}
-            containerStyle={styles.filterAvatar}
-            avatarStyle={styles.filterEnemyAvatar}
-          />
+          <View style={styles.characterFilter}>
+            <Avatar
+              rounded
+              size="medium"
+              source={this.props.filteredMyCharacter.image}
+              onPress={() => {this.props.openCharacter(TARGET_TYPE.FILTERED_MY)}}
+              containerStyle={styles.filterAvatar}
+              avatarStyle={styles.filterMyAvatar}
+            />
+            <Avatar
+              rounded
+              size="medium"
+              source={this.props.filteredEnemyCharacter.image}
+              onPress={() => {this.props.openCharacter(TARGET_TYPE.FILTERED_ENEMY)}}
+              containerStyle={styles.filterAvatar}
+              avatarStyle={styles.filterEnemyAvatar}
+            />
+          </View>
           <Icon
             raised
             type='octicon'
@@ -233,10 +234,14 @@ const styles = StyleSheet.create({
       height: 65,
     }),
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     paddingRight: 10,
     borderColor: '#DDD',
     borderWidth: 1,
+  },
+  characterFilter: {
+    flexDirection: 'row',
+    marginLeft: 10,
   },
   filterAvatar: {
     marginTop: 7,
