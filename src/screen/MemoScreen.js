@@ -37,34 +37,8 @@ class MemoScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      inputText: "",
-      inputDate: this.getTodayDate(),
       filterText: "",
     }
-  }
-
-  getTodayDate = () => {
-    const now = new Date()
-    return now.getFullYear() + '/' + this.addZeroForDate(now.getMonth() + 1) + '/' + this.addZeroForDate(now.getDate())
-  }
-
-  addZeroForDate = (number) => {
-    return ('00' + number).slice(-2)
-  }
-
-  addItem = () => {
-    const content = this.state.inputText
-    if (content === "") {
-      return;
-    }
-
-    this.props.addMemo(content, this.state.inputDate)
-    this.setState({
-      inputText: "",
-      inputDate: this.getTodayDate(),
-    })
-
-    this.closeAddMemoWindow()
   }
 
   deleteItem = (item) => {
