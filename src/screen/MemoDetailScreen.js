@@ -113,14 +113,12 @@ class MemoDetail extends React.Component {
               onPress={() => this.props.closeDetail()}
               containerStyle={{ borderBottomLeftRadius: 20 }}
               buttonStyle={[ styles.buttonStyle, { borderBottomLeftRadius: 20, backgroundColor: '#DA5A5A' }]}
-              raised={true}
             />
             <Button
               title="Save"
               onPress={() => this.addItem()}
               containerStyle={{ borderBottomRightRadius: 20 }}
               buttonStyle={[ styles.buttonStyle , { borderBottomRightRadius: 20 }]}
-              raised={true}
             />
           </View>
         </View>
@@ -200,7 +198,7 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     width: 175,
-    height: 40,
+    height: 41,
     borderRadius: 0,
   }
 });
