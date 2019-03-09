@@ -1,5 +1,9 @@
 export const characters = [
   {
+    name: 'any',
+    image: require('../../assets/character/any.png')
+  },
+  {
     name: 'mario',
     image: require('../../assets/character/mario.jpg'),
   },
@@ -174,9 +178,5 @@ export const characters = [
   {
     name: 'wolf',
     image: require('../../assets/character/wolf.jpg')
-  },
-  {
-    name: 'any',
-    image: require('../../assets/character/any.png')
   },
 ]
