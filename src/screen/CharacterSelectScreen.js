@@ -20,14 +20,12 @@ class CharacterSelect extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      avatarList: this.setupAvatarList()
+    }
   }
 
-  setCharacter = (characterName) => {
-    this.props.setCharacter(characterName)
-    this.props.closeCharacter()
-  }
-
-  render() {
+  setupAvatarList = () => {
     avatarList = []
     characters.forEach((character) => {
       avatarList.push(
@@ -42,7 +40,15 @@ class CharacterSelect extends React.Component {
         />
       )
     })
+    return avatarList
+  }
 
+  setCharacter = (characterName) => {
+    this.props.setCharacter(characterName)
+    this.props.closeCharacter()
+  }
+
+  render() {
     return (
       <Modal
         style={styles.modal}
@@ -52,7 +58,7 @@ class CharacterSelect extends React.Component {
       >
         <ScrollView>
           <View style={styles.characterView}>
-            {avatarList}
+            {this.state.avatarList}
           </View>
         </ScrollView>
         <Button
