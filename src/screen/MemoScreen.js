@@ -13,7 +13,6 @@ import {
   ListItem,
   Icon,
   Avatar,
-  Text,
 } from 'react-native-elements';
 
 import Swipeout from 'react-native-swipeout'
