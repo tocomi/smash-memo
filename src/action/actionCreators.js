@@ -46,3 +46,11 @@ export const setCharacter = (character) => {
     character,
   }
 }
+
+export const setSelectedCharacter = (myCharacter, enemyCharacter) => {
+  return {
+    type: MEMO.SET_SELECTED_CHARACTER,
+    myCharacter,
+    enemyCharacter,
+  }
+}

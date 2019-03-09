@@ -79,6 +79,12 @@ const memos = (state = initialState, action) => {
             selectedEnemyCharacter: characters.find((character) => character.name === action.character),
           }
       }
+    case MEMO.SET_SELECTED_CHARACTER:
+      return {
+        ...state,
+        selectedMyCharacter: action.myCharacter,
+        selectedEnemyCharacter: action.enemyCharacter,
+      }
     default:
       return state
   }

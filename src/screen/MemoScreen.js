@@ -26,7 +26,7 @@ import {
 } from 'react-native-iphone-x-helper'
 
 import { connect } from 'react-redux'
-import { deleteMemo, openDetail, openCharacter } from '../action/actionCreators'
+import { deleteMemo, openDetail, openCharacter, setSelectedCharacter } from '../action/actionCreators'
 
 import { TARGET_TYPE } from '../type/targetType'
 
@@ -47,6 +47,11 @@ class MemoScreen extends React.Component {
 
   closeAddMemoWindow = () => {
     this.refs.addMemoWindow.close()
+  }
+
+  openEditMemoWindow = (memo) => {
+    this.props.setSelectedCharacter(memo.myCharacter, memo.enemyCharacter)
+    this.props.openDetail()
   }
 
   swipeButton = (item) => {
@@ -103,6 +108,7 @@ class MemoScreen extends React.Component {
                   bottomDivider
                   leftAvatar={{ source: item.myCharacter.image, avatarStyle: styles.listMyAvatar }}
                   rightAvatar={{ source: item.enemyCharacter.image, avatarStyle: styles.listEnemyAvatar, size: 'small' }}
+                  onLongPress={() => this.openEditMemoWindow(item)}
                 />
               </Swipeout>
             }
@@ -165,6 +171,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     openCharacter(targetType) {
       dispatch(openCharacter(targetType))
+    },
+    setSelectedCharacter(myCharacter, enemyCharacter) {
+      dispatch(setSelectedCharacter(myCharacter, enemyCharacter))
     },
   }
 }
