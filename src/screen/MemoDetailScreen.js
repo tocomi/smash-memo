@@ -39,12 +39,12 @@ class MemoDetail extends React.Component {
   }
 
   addItem = () => {
-    const content = this.state.inputText
-    if (content === "") {
+    const text = this.state.inputText
+    if (text === "") {
       return;
     }
 
-    this.props.addMemo(content, this.state.inputDate)
+    this.props.addMemo(text, this.state.inputDate)
     this.setState({
       inputText: "",
       inputDate: this.getTodayDate(),
@@ -99,12 +99,12 @@ class MemoDetail extends React.Component {
           </View>
           <View style={styles.inputView}>
             <Input
-              onChangeText={(text) => this.setState({inputText: text})}
               value={this.state.inputText}
               multiline={true}
               numberOfLines={10}
               containerStyle={styles.inputText}
               inputStyle={{ height: 200 }}
+              onChangeText={(text) => this.setState({inputText: text})}
             />
           </View>
           <View style={styles.inputButtons}>
@@ -130,6 +130,8 @@ class MemoDetail extends React.Component {
 const mapStateToProps = (state) => {
   return {
     memos: state.memos.memos,
+    inputText: state.memos.inputText,
+    inputDate: state.memos.inputDate,
     isDetailOpen: state.memos.isDetailOpen,
     isCharacterOpen: state.memos.isCharacterOpen,
     selectedMyCharacter: state.memos.selectedMyCharacter,
@@ -139,8 +141,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addMemo(content, date) {
-      dispatch(addMemo(content, date))
+    addMemo(text, date) {
+      dispatch(addMemo(text, date))
     },
     closeDetail() {
       dispatch(closeDetail())

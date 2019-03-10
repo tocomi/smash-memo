@@ -1,9 +1,9 @@
 import { MEMO } from './actions'
 
-export const addMemo = (content, date) => {
+export const addMemo = (text, date) => {
   return {
     type: MEMO.ADD,
-    content,
+    text,
     date,
   }
 }
@@ -47,10 +47,9 @@ export const setCharacter = (character) => {
   }
 }
 
-export const setSelectedCharacter = (myCharacter, enemyCharacter) => {
+export const setSelectedMemo = (selectedMemo) => {
   return {
-    type: MEMO.SET_SELECTED_CHARACTER,
-    myCharacter,
-    enemyCharacter,
+    type: MEMO.SET_SELECTED_MEMO,
+    selectedMemo,
   }
 }

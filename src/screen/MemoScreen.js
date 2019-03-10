@@ -26,7 +26,7 @@ import {
 } from 'react-native-iphone-x-helper'
 
 import { connect } from 'react-redux'
-import { deleteMemo, openDetail, openCharacter, setSelectedCharacter } from '../action/actionCreators'
+import { deleteMemo, openDetail, openCharacter, setSelectedMemo} from '../action/actionCreators'
 
 import { TARGET_TYPE } from '../type/targetType'
 
@@ -50,7 +50,7 @@ class MemoScreen extends React.Component {
   }
 
   openEditMemoWindow = (memo) => {
-    this.props.setSelectedCharacter(memo.myCharacter, memo.enemyCharacter)
+    this.props.setSelectedMemo(memo)
     this.props.openDetail()
   }
 
@@ -75,7 +75,7 @@ class MemoScreen extends React.Component {
       memos = memos.filter(memo => memo.enemyCharacter.name === this.props.filteredEnemyCharacter.name)
     }
     if (filterText !== "") {
-      memos = memos.filter(memo => memo.content.includes(filterText))
+      memos = memos.filter(memo => memo.text.includes(filterText))
     }
     const platform = Platform.OS === 'ios' ? 'ios' : 'android'
 
@@ -102,9 +102,9 @@ class MemoScreen extends React.Component {
                 autoClose={true}
               >
                 <ListItem
-                  title={item.content}
+                  title={item.text}
                   subtitle={item.date}
-                  subtitleStyle={{fontSize: 12, color: 'gray'}}
+                  subtitleStyle={{ fontSize: 12, color: 'gray' }}
                   bottomDivider
                   leftAvatar={{ source: item.myCharacter.image, avatarStyle: styles.listMyAvatar }}
                   rightAvatar={{ source: item.enemyCharacter.image, avatarStyle: styles.listEnemyAvatar, size: 'small' }}
@@ -172,8 +172,8 @@ const mapDispatchToProps = (dispatch) => {
     openCharacter(targetType) {
       dispatch(openCharacter(targetType))
     },
-    setSelectedCharacter(myCharacter, enemyCharacter) {
-      dispatch(setSelectedCharacter(myCharacter, enemyCharacter))
+    setSelectedMemo(memo) {
+      dispatch(setSelectedMemo(memo))
     },
   }
 }

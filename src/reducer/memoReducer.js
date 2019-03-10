@@ -11,6 +11,9 @@ const initialState = {
   filteredEnemyCharacter: characters.slice(-1)[0],
   selectedMyCharacter: characters.slice(-1)[0],
   selectedEnemyCharacter: characters.slice(-1)[0],
+  inputText: "",
+  inputDate: "",
+  selectedIndex: -1,
   targetType: null,
 }
 
@@ -18,7 +21,7 @@ const memos = (state = initialState, action) => {
   switch (action.type) {
     case MEMO.ADD:
       const newMemo = {
-        content: action.content,
+        text: action.text,
         date: action.date,
         myCharacter: state.selectedMyCharacter,
         enemyCharacter: state.selectedEnemyCharacter,
@@ -79,11 +82,14 @@ const memos = (state = initialState, action) => {
             selectedEnemyCharacter: characters.find((character) => character.name === action.character),
           }
       }
-    case MEMO.SET_SELECTED_CHARACTER:
+    case MEMO.SET_SELECTED_MEMO:
       return {
         ...state,
-        selectedMyCharacter: action.myCharacter,
-        selectedEnemyCharacter: action.enemyCharacter,
+        selectedMyCharacter: action.selectedMemo.myCharacter,
+        selectedEnemyCharacter: action.selectedMemo.enemyCharacter,
+        inputText: action.selectedMemo.text,
+        inputDate: action.selectedMemo.date,
+        selectedIndex: action.selectedMemo.index,
       }
     default:
       return state
