@@ -25,15 +25,6 @@ class MemoDetail extends React.Component {
     super(props)
   }
 
-  getTodayDate = () => {
-    const now = new Date()
-    return now.getFullYear() + '/' + this.addZeroForDate(now.getMonth() + 1) + '/' + this.addZeroForDate(now.getDate())
-  }
-
-  addZeroForDate = (number) => {
-    return ('00' + number).slice(-2)
-  }
-
   addItem = () => {
     if (this.props.inputText === "") {
       return;

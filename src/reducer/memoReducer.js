@@ -1,6 +1,7 @@
 import { MEMO } from '../action/actions'
 import { TARGET_TYPE } from '../type/targetType'
 import { characters } from '../data/characters'
+import { getTodayDate } from '../lib/DateUtil'
 
 const initialState = {
   memos: [],
@@ -12,7 +13,7 @@ const initialState = {
   selectedMyCharacter: characters.slice(-1)[0],
   selectedEnemyCharacter: characters.slice(-1)[0],
   inputText: "",
-  inputDate: "",
+  inputDate: getTodayDate(),
   selectedIndex: -1,
   targetType: null,
 }
@@ -32,6 +33,7 @@ const memos = (state = initialState, action) => {
         memos: [ ...state.memos, newMemo ],
         currentIndex: state.currentIndex + 1,
         inputText: "",
+        inputDate: getTodayDate(),
       }
     case MEMO.DELETE:
       const memos = state.memos.filter(memo => memo.index !== action.index)
