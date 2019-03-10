@@ -53,10 +53,11 @@ const memos = (state = initialState, action) => {
             enemyCharacter: state.selectedEnemyCharacter,
             index: targetMemo.index
           }
-          state.memos.splice(targetIndex, 1, updateMemo)
+          const memos = state.memos.concat()
+          memos.splice(targetIndex, 1, updateMemo)
           return {
             ...state,
-            memos: state.memos,
+            memos: memos,
           }
       }
     case MEMO.DELETE:
