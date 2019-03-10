@@ -1,5 +1,6 @@
 import { MEMO } from '../action/actions'
 import { TARGET_TYPE } from '../type/targetType'
+import { MODE_TYPE } from '../type/modeType'
 import { characters } from '../data/characters'
 import { getTodayDate } from '../lib/DateUtil'
 
@@ -16,24 +17,47 @@ const initialState = {
   inputDate: getTodayDate(),
   selectedIndex: -1,
   targetType: null,
+  modeType: null,
 }
 
 const memos = (state = initialState, action) => {
-  switch (action.type) {
+  switch(action.type) {
     case MEMO.ADD:
-      const newMemo = {
-        text: state.inputText,
-        date: state.inputDate,
-        myCharacter: state.selectedMyCharacter,
-        enemyCharacter: state.selectedEnemyCharacter,
-        index: state.currentIndex
-      }
-      return {
-        ...state,
-        memos: [ ...state.memos, newMemo ],
-        currentIndex: state.currentIndex + 1,
-        inputText: "",
-        inputDate: getTodayDate(),
+      switch(state.modeType) {
+        case MODE_TYPE.ADD:
+          const newMemo = {
+            text: state.inputText,
+            date: state.inputDate,
+            myCharacter: state.selectedMyCharacter,
+            enemyCharacter: state.selectedEnemyCharacter,
+            index: state.currentIndex
+          }
+          return {
+            ...state,
+            memos: [ ...state.memos, newMemo ],
+            currentIndex: state.currentIndex + 1,
+            inputText: "",
+            inputDate: getTodayDate(),
+          }
+        case MODE_TYPE.EDIT:
+          const targetIndex = state.memos.findIndex((memo) => memo.index === state.selectedIndex)
+          if (targetIndex < 0) {
+            alert('Update error.')
+            return state
+          }
+          const targetMemo = state.memos[targetIndex]
+          const updateMemo = {
+            text: state.inputText,
+            date: state.inputDate,
+            myCharacter: state.selectedMyCharacter,
+            enemyCharacter: state.selectedEnemyCharacter,
+            index: targetMemo.index
+          }
+          state.memos.splice(targetIndex, 1, updateMemo)
+          return {
+            ...state,
+            memos: state.memos,
+          }
       }
     case MEMO.DELETE:
       const memos = state.memos.filter(memo => memo.index !== action.index)
@@ -42,9 +66,22 @@ const memos = (state = initialState, action) => {
         memos: memos,
       }
     case MEMO.OPEN_DETAIL:
-      return {
-        ...state,
-        isDetailOpen: true,
+      switch(action.mode) {
+        case MODE_TYPE.ADD:
+          return {
+            ...state,
+            isDetailOpen: true,
+            modeType: action.mode,
+            inputText: "",
+            inputDate: getTodayDate(),
+            selectedIndex: -1,
+          }
+        case MODE_TYPE.EDIT:
+          return {
+            ...state,
+            isDetailOpen: true,
+            modeType: action.mode
+          }
       }
     case MEMO.CLOSE_DETAIL:
       return {

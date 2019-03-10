@@ -13,9 +13,10 @@ export const deleteMemo = (index) => {
   }
 }
 
-export const openDetail = () => {
+export const openDetail = (mode) => {
   return {
     type: MEMO.OPEN_DETAIL,
+    mode,
   }
 }
 

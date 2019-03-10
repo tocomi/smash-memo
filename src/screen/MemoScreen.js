@@ -29,6 +29,7 @@ import { connect } from 'react-redux'
 import { deleteMemo, openDetail, openCharacter, setSelectedMemo} from '../action/actionCreators'
 
 import { TARGET_TYPE } from '../type/targetType'
+import { MODE_TYPE } from '../type/modeType'
 
 const STATUSBAR_HEIGHT = getStatusBarHeight()
 
@@ -51,7 +52,7 @@ class MemoScreen extends React.Component {
 
   openEditMemoWindow = (memo) => {
     this.props.setSelectedMemo(memo)
-    this.props.openDetail()
+    this.props.openDetail(MODE_TYPE.EDIT)
   }
 
   swipeButton = (item) => {
@@ -141,7 +142,7 @@ class MemoScreen extends React.Component {
             name='pencil'
             color='#EA5A5A'
             reverse={true}
-            onPress={() => this.props.openDetail()}
+            onPress={() => this.props.openDetail(MODE_TYPE.ADD)}
           />
         </View>
 
@@ -166,8 +167,8 @@ const mapDispatchToProps = (dispatch) => {
     deleteMemo(index) {
       dispatch(deleteMemo(index))
     },
-    openDetail() {
-      dispatch(openDetail())
+    openDetail(mode) {
+      dispatch(openDetail(mode))
     },
     openCharacter(targetType) {
       dispatch(openCharacter(targetType))

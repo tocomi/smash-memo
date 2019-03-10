@@ -122,8 +122,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addMemo(text, date) {
-      dispatch(addMemo(text, date))
+    addMemo() {
+      dispatch(addMemo())
     },
     closeDetail() {
       dispatch(closeDetail())
