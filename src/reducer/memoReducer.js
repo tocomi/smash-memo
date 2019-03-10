@@ -21,8 +21,8 @@ const memos = (state = initialState, action) => {
   switch (action.type) {
     case MEMO.ADD:
       const newMemo = {
-        text: action.text,
-        date: action.date,
+        text: state.inputText,
+        date: state.inputDate,
         myCharacter: state.selectedMyCharacter,
         enemyCharacter: state.selectedEnemyCharacter,
         index: state.currentIndex
@@ -31,6 +31,7 @@ const memos = (state = initialState, action) => {
         ...state,
         memos: [ ...state.memos, newMemo ],
         currentIndex: state.currentIndex + 1,
+        inputText: "",
       }
     case MEMO.DELETE:
       const memos = state.memos.filter(memo => memo.index !== action.index)
@@ -90,6 +91,16 @@ const memos = (state = initialState, action) => {
         inputText: action.selectedMemo.text,
         inputDate: action.selectedMemo.date,
         selectedIndex: action.selectedMemo.index,
+      }
+    case MEMO.SET_INPUT_TEXT:
+      return {
+        ...state,
+        inputText: action.inputText,
+      }
+    case MEMO.SET_INPUT_DATE:
+      return {
+        ...state,
+        inputDate: action.inputDate,
       }
     default:
       return state

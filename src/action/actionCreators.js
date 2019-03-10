@@ -1,10 +1,8 @@
 import { MEMO } from './actions'
 
-export const addMemo = (text, date) => {
+export const addMemo = () => {
   return {
     type: MEMO.ADD,
-    text,
-    date,
   }
 }
 
@@ -51,5 +49,19 @@ export const setSelectedMemo = (selectedMemo) => {
   return {
     type: MEMO.SET_SELECTED_MEMO,
     selectedMemo,
+  }
+}
+
+export const setInputText = (inputText) => {
+  return {
+    type: MEMO.SET_INPUT_TEXT,
+    inputText,
+  }
+}
+
+export const setInputDate = (inputDate) => {
+  return {
+    type: MEMO.SET_INPUT_DATE,
+    inputDate,
   }
 }

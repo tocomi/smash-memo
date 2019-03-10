@@ -15,7 +15,7 @@ import Modal from 'react-native-modalbox';
 import DatePicker from 'react-native-datepicker'
 
 import { connect } from 'react-redux'
-import { addMemo, closeDetail, openCharacter } from '../action/actionCreators'
+import { addMemo, closeDetail, openCharacter, setInputText, setInputDate } from '../action/actionCreators'
 
 import { TARGET_TYPE } from '../type/targetType'
 
@@ -23,10 +23,6 @@ class MemoDetail extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      inputText: "",
-      inputDate: this.getTodayDate(),
-    }
   }
 
   getTodayDate = () => {
@@ -39,17 +35,11 @@ class MemoDetail extends React.Component {
   }
 
   addItem = () => {
-    const text = this.state.inputText
-    if (text === "") {
+    if (this.props.inputText === "") {
       return;
     }
 
-    this.props.addMemo(text, this.state.inputDate)
-    this.setState({
-      inputText: "",
-      inputDate: this.getTodayDate(),
-    })
-
+    this.props.addMemo()
     this.closeAddMemoWindow()
   }
 
@@ -90,21 +80,21 @@ class MemoDetail extends React.Component {
           <View style={styles.inputView}>
             <DatePicker
               style={{width: '100%'}}
-              date={this.state.inputDate}
+              date={this.props.inputDate}
               confirmBtnText='Confirm'
               cancelBtnText='Cancel'
               format='YYYY/MM/DD'
-              onDateChange={(date) => {this.setState({inputDate: date})}}
+              onDateChange={(date) => this.props.setInputDate(date)}
             />
           </View>
           <View style={styles.inputView}>
             <Input
-              value={this.state.inputText}
+              value={this.props.inputText}
               multiline={true}
               numberOfLines={10}
               containerStyle={styles.inputText}
               inputStyle={{ height: 200 }}
-              onChangeText={(text) => this.setState({inputText: text})}
+              onChangeText={(text) => this.props.setInputText(text)}
             />
           </View>
           <View style={styles.inputButtons}>
@@ -149,7 +139,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     openCharacter(targetType) {
       dispatch(openCharacter(targetType))
-    }
+    },
+    setInputText(text) {
+      dispatch(setInputText(text))
+    },
+    setInputDate(date) {
+      dispatch(setInputDate(date))
+    },
   }
 }
 
