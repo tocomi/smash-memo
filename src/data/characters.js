@@ -179,4 +179,80 @@ export const characters = [
     name: 'wolf',
     image: require('../../assets/character/wolf.jpg')
   },
+  {
+    name: 'murabito',
+    image: require('../../assets/character/murabito.jpg')
+  },
+  {
+    name: 'rockman',
+    image: require('../../assets/character/rockman.jpg')
+  },
+  {
+    name: 'wiifittrainer',
+    image: require('../../assets/character/wiifittrainer.jpg')
+  },
+  {
+    name: 'rosetta',
+    image: require('../../assets/character/rosetta.jpg')
+  },
+  {
+    name: 'littlemac',
+    image: require('../../assets/character/littlemac.jpg')
+  },
+  {
+    name: 'gekkouga',
+    image: require('../../assets/character/gekkouga.jpg')
+  },
+  {
+    name: 'miibrawler',
+    image: require('../../assets/character/miibrawler.jpg')
+  },
+  {
+    name: 'miigunner',
+    image: require('../../assets/character/miigunner.jpg')
+  },
+  {
+    name: 'miisword',
+    image: require('../../assets/character/miisword.jpg')
+  },
+  {
+    name: 'palutena',
+    image: require('../../assets/character/palutena.jpg')
+  },
+  {
+    name: 'pacman',
+    image: require('../../assets/character/pacman.jpg')
+  },
+  {
+    name: 'reflet',
+    image: require('../../assets/character/reflet.jpg')
+  },
+  {
+    name: 'shulk',
+    image: require('../../assets/character/shulk.jpg')
+  },
+  {
+    name: 'kuppajr',
+    image: require('../../assets/character/kuppajr.jpg')
+  },
+  {
+    name: 'duckhunt',
+    image: require('../../assets/character/duckhunt.jpg')
+  },
+  {
+    name: 'ryu',
+    image: require('../../assets/character/ryu.jpg')
+  },
+  {
+    name: 'cloud',
+    image: require('../../assets/character/cloud.jpg')
+  },
+  {
+    name: 'kamui',
+    image: require('../../assets/character/kamui.jpg')
+  },
+  {
+    name: 'beyonetta',
+    image: require('../../assets/character/beyonetta.jpg')
+  },
 ]
