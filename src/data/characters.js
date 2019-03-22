@@ -264,6 +264,10 @@ export const characters = [
     image: require('../../assets/character/ryu.jpg')
   },
   {
+    name: 'ken',
+    image: require('../../assets/character/ken.jpg')
+  },
+  {
     name: 'cloud',
     image: require('../../assets/character/cloud.jpg')
   },
