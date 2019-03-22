@@ -20,6 +20,10 @@ export const characters = [
     image: require('../../assets/character/samus.jpg'),
   },
   {
+    name: 'darksamus',
+    image: require('../../assets/character/darksamus.jpg'),
+  },
+  {
     name: 'yoshi',
     image: require('../../assets/character/yoshi.jpg'),
   },
@@ -56,6 +60,10 @@ export const characters = [
     image: require('../../assets/character/peach.jpg'),
   },
   {
+    name: 'daisy',
+    image: require('../../assets/character/daisy.jpg'),
+  },
+  {
     name: 'kuppa',
     image: require('../../assets/character/kuppa.jpg'),
   },
@@ -88,6 +96,10 @@ export const characters = [
     image: require('../../assets/character/marth.jpg'),
   },
   {
+    name: 'lucina',
+    image: require('../../assets/character/lucina.jpg'),
+  },
+  {
     name: 'younglink',
     image: require('../../assets/character/younglink.jpg'),
   },
@@ -104,6 +116,10 @@ export const characters = [
     image: require('../../assets/character/roy.jpg'),
   },
   {
+    name: 'chrom',
+    image: require('../../assets/character/chrom.jpg'),
+  },
+  {
     name: 'gameandwatch',
     image: require('../../assets/character/gameandwatch.jpg'),
   },
@@ -114,6 +130,10 @@ export const characters = [
   {
     name: 'pit',
     image: require('../../assets/character/pit.jpg')
+  },
+  {
+    name: 'blackpit',
+    image: require('../../assets/character/blackpit.jpg')
   },
   {
     name: 'zerosuitsamus',
