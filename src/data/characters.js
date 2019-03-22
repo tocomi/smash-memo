@@ -156,8 +156,8 @@ export const characters = [
     image: require('../../assets/character/zenigame.jpg')
   },
   {
-    name: 'fusigisou',
-    image: require('../../assets/character/fusigisou.jpg')
+    name: 'fushigisou',
+    image: require('../../assets/character/fushigisou.jpg')
   },
   {
     name: 'lizardon',
