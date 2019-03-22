@@ -255,4 +255,36 @@ export const characters = [
     name: 'beyonetta',
     image: require('../../assets/character/beyonetta.jpg')
   },
+  {
+    name: 'inkling',
+    image: require('../../assets/character/inkling.jpg')
+  },
+  {
+    name: 'ridley',
+    image: require('../../assets/character/ridley.jpg')
+  },
+  {
+    name: 'simon',
+    image: require('../../assets/character/simon.jpg')
+  },
+  {
+    name: 'richter',
+    image: require('../../assets/character/richter.jpg')
+  },
+  {
+    name: 'kingkrool',
+    image: require('../../assets/character/kingkrool.jpg')
+  },
+  {
+    name: 'shizue',
+    image: require('../../assets/character/shizue.jpg')
+  },
+  {
+    name: 'gaogaen',
+    image: require('../../assets/character/gaogaen.jpg')
+  },
+  {
+    name: 'packenflower',
+    image: require('../../assets/character/packenflower.jpg')
+  },
 ]
