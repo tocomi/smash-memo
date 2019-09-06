@@ -311,4 +311,16 @@ export const characters = [
     name: 'packenflower',
     image: require('../../assets/character/packenflower.jpg')
   },
+  {
+    name: 'joker',
+    image: require('../../assets/character/joker.jpg')
+  },
+  {
+    name: 'hero',
+    image: require('../../assets/character/hero.jpg')
+  },
+  {
+    name: 'banjoandkazooie',
+    image: require('../../assets/character/banjoandkazooie.jpg')
+  },
 ]
