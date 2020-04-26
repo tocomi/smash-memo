@@ -3,7 +3,6 @@
     "name": "Smash Memo",
     "slug": "smash-memo",
     "privacy": "public",
-    "sdkVersion": "32.0.0",
     "platforms": [
       "ios",
       "android"
